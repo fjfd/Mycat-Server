@@ -190,4 +190,8 @@
 	</function>
 	<!-- 自然月分片 -->
 	<function name="PartitionByMonth" class="io.mycat.route.function.PartitionByMonth">
-		<p
+		<property name="dateFormat">yyyy-MM-dd</property>
+		<property name="sBeginDate">2017-01-01</property>
+	</function>
+	
+</mycat:rule>
