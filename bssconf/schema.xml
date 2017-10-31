@@ -1,0 +1,2255 @@
+<?xml version="1.0"?>
+<!DOCTYPE mycat:schema SYSTEM "schema.dtd">
+<mycat:schema xmlns:mycat="http://io.mycat/">
+
+	<!--                 逻辑库                 -->
+	<!-- 受理中心 -->
+	<!-- bss 3.0 客户中心分片测试配置   127.0.0.1:8066:BSS3CUSTDB -->
+	<!-- <schema name="BSS3CUSTDB" checkSQLschema="false"> -->
+	<schema name="BSS3CUSTDB" checkSQLschema="false" sqlMaxLimit="100000">
+		<!-- 测试的表 -->
+		<!-- <table name="customer_rwcs" dataNode="bss_dn$1-2" rule="customer_rule" primaryKey="cust_id"/> -->
+		<!--
+			create table test_rwcs_timestap
+			(cust_id number(16), c_date date);
+		-->
+		<table name="test_rwcs_timestap" dataNode="bss_dn$1-2" rule="customer_rule" primaryKey="cust_id"/>
+
+		<!-- 系统全局表 -->	
+		<table name="user_tables" type="global" dataNode="bss_dn$1-2" />
+		<table name="user_sequences" type="global" dataNode="bss_dn$1-2" />
+		<table name="dual" type="global" dataNode="bss_dn$1-2" />
+		
+		<!-- 客户业务全局表 -->
+		<table name="attr_spec" type="global" dataNode="bss_dn$1-2" />
+		<table name="attr_spec_tree" type="global" dataNode="bss_dn$1-2" />
+		<table name="attr_value" type="global" dataNode="bss_dn$1-2" />
+		<table name="attribute_value_rela" type="global" dataNode="bss_dn$1-2" />
+		<table name="club" type="global" dataNode="bss_dn$1-2" />
+		<table name="club_mbr_lev_service_rel" type="global" dataNode="bss_dn$1-2" />
+		<table name="club_member_action" type="global" dataNode="bss_dn$1-2" />
+		<table name="club_member_service" type="global" dataNode="bss_dn$1-2" />
+		<table name="contacts_info" type="global" dataNode="bss_dn$1-2" />
+		<table name="contacts_info_attr" type="global" dataNode="bss_dn$1-2" />
+		<table name="contacts_info_his" type="global" dataNode="bss_dn$1-2" />
+		<table name="dc_public" type="global" dataNode="bss_dn$1-2" />
+		<table name="dc_sql"  type="global" dataNode="bss_dn$1-2" />
+		<table name="dc_sql_service" type="global" dataNode="bss_dn$1-2" />
+		<table name="dc_system_param"  type="global" dataNode="bss_dn$1-2" />
+		<table name="industry_name_key"  type="global" dataNode="bss_dn$1-2" />
+		<table name="industry_type"  type="global" dataNode="bss_dn$1-2" />
+		<table name="industry_type_key_word"  type="global" dataNode="bss_dn$1-2" />
+		<table name="job_run_cursor" dataNode="bss_order$1-2" />
+		<table name="job_task" dataNode="bss_order$1-2" />
+		<table name="organization" type="global"  dataNode="bss_dn$1-2" />
+		<table name="party" type="global"  dataNode="bss_dn$1-2" />
+		<table name="party_attr" type="global"  dataNode="bss_dn$1-2" />
+		<table name="party_cert" type="global"  dataNode="bss_dn$1-2" />
+		<table name="party_cert_his" type="global"  dataNode="bss_dn$1-2" />
+		<table name="party_check_log" type="global"  dataNode="bss_dn$1-2" />
+		<table name="party_his" type="global"  dataNode="bss_dn$1-2" />
+		<table name="party_ind" type="global"  dataNode="bss_dn$1-2" />
+		<table name="party_ind_his" type="global" dataNode="bss_dn$1-2" />
+		<table name="party_org" type="global"  dataNode="bss_dn$1-2" />
+		<table name="party_org_his" type="global"  dataNode="bss_dn$1-2" />
+		<table name="party_rel" type="global"  dataNode="bss_dn$1-2" />
+		<table name="party_role" type="global"  dataNode="bss_dn$1-2" />
+		<table name="query_wizard" type="global" dataNode="bss_dn$1-2" />
+		<table name="query_wizard_condition" type="global" dataNode="bss_dn$1-2" />
+		<table name="query_wizard_config" type="global" dataNode="bss_dn$1-2" />
+		<table name="query_wizard_favorites" type="global" dataNode="bss_dn$1-2" />
+		<table name="query_wizard_rela" type="global" dataNode="bss_dn$1-2" />
+		<table name="query_wizard_tip" type="global" dataNode="bss_dn$1-2" />
+		<table name="query_condition_permission" type="global" dataNode="bss_dn$1-2" />
+		<table name="query_config" type="global" dataNode="bss_dn$1-2" />
+		<table name="query_config_cat" type="global" dataNode="bss_dn$1-2" />
+		<table name="query_config_rela" type="global" dataNode="bss_dn$1-2" />
+		<table name="query_content" type="global" dataNode="bss_dn$1-2" />
+		<table name="query_item" type="global" dataNode="bss_dn$1-2" />
+		<table name="query_item_action" type="global" dataNode="bss_dn$1-2" />
+		<table name="query_item_content" type="global" dataNode="bss_dn$1-2" />
+		<table name="query_item_detail" type="global" dataNode="bss_dn$1-2" />
+		<table name="query_item_ext" type="global" dataNode="bss_dn$1-2" />
+		<table name="query_item_rela" type="global" dataNode="bss_dn$1-2" />
+		<table name="query_param_config" type="global" dataNode="bss_dn$1-2" />
+		<table name="query_permission" type="global" dataNode="bss_dn$1-2" />
+		<table name="query_style" type="global" dataNode="bss_dn$1-2" />
+		<table name="query_tip" type="global" dataNode="bss_dn$1-2" />
+		<table name="query_tip_config" type="global" dataNode="bss_dn$1-2" />
+		<table name="query_tip_rela" type="global" dataNode="bss_dn$1-2" />
+		<!-- <table name="query_type" type="global" dataNode="bss_order$1-2" />
+		<table name="query_type_attr" type="global" dataNode="bss_order$1-2" /> -->
+		<table name="query_variable" type="global" dataNode="bss_dn$1-2" />
+		<table name="query_var_rela" type="global" dataNode="bss_dn$1-2" />
+		<table name="search_engine_dict" type="global" dataNode="bss_dn$1-2" />
+		<table name="seq_manage" type="global"  dataNode="bss_dn$1-2" />
+		<table name="sequence_management" type="global"  dataNode="bss_dn$1-2" />
+		<table name="staff" type="global"  dataNode="bss_dn$1-2" />
+		<table name="system_user" type="global"  dataNode="bss_dn$1-2" />
+		<table name="system_user_post" type="global"  dataNode="bss_dn$1-2" />
+		<table name="tfm_action_args" type="global" dataNode="bss_dn$1-2" />
+		<table name="tfm_action_list" type="global" dataNode="bss_dn$1-2" />
+		<table name="tfm_error_log" type="global" dataNode="bss_dn$1-2" />
+		<table name="tfm_services" type="global" dataNode="bss_dn$1-2" />
+		<table name="tfm_service_args" type="global" dataNode="bss_dn$1-2" />
+		<table name="tfm_serv_args" type="global" dataNode="bss_dn$1-2" />
+		<table name="tfm_serv_class_def" type="global" dataNode="bss_dn$1-2" />
+		<table name="tfm_serv_ext" type="global" dataNode="bss_dn$1-2" />
+		<table name="tfm_serv_relation" type="global" dataNode="bss_dn$1-2" />
+		<!-- 奇葩的全局表 -->
+		<table name="org_yingshang" type="global" dataNode="bss_dn$1-2" /> <!-- 新增客户，校验证件类型 -->
+		<!-- jk_dev全局表 -->
+		<table name="csb_config" type="global" dataNode="bss_dn$1-2" />
+		<table name="csb_customer_order" type="global" dataNode="bss_dn$1-2" />
+		<table name="csb_customer_order_attr" type="global" dataNode="bss_dn$1-2" />
+		<table name="csb_cust_guibing" type="global" dataNode="bss_dn$1-2" />
+		<table name="csb_dkx_order_connect" type="global" dataNode="bss_dn$1-2" />
+		<table name="csb_general_code_map" type="global" dataNode="bss_dn$1-2" />
+		<table name="csb_info" type="global" dataNode="bss_dn$1-2" />
+		<table name="csb_order_exception" type="global" dataNode="bss_dn$1-2" />
+		<table name="csb_order_item_group" type="global" dataNode="bss_dn$1-2" />
+		<table name="csb_order_item_group_attr" type="global" dataNode="bss_dn$1-2" />
+		<table name="csb_order_xml_resolve" type="global" dataNode="bss_dn$1-2" />
+		<table name="csb_query_ext" type="global" dataNode="bss_dn$1-2" />
+		<table name="csb_rule_event" type="global" dataNode="bss_dn$1-2" />
+		<table name="csb_sequence_conf" type="global" dataNode="bss_dn$1-2" />
+		<table name="csb_service_conf" type="global" dataNode="bss_dn$1-2" />
+		<table name="csb_service_info" type="global" dataNode="bss_dn$1-2" />
+		<table name="csb_soo_dkx_order" type="global"  dataNode="bss_dn$1-2" />
+		<table name="csb_soo_finish" type="global" dataNode="bss_dn$1-2" />
+		<table name="csb_soo_info" type="global" dataNode="bss_dn$1-2" />
+		<table name="csb_soo_log" type="global" dataNode="bss_dn$1-2" />
+		<table name="csb_soo_order_ext" type="global" dataNode="bss_dn$1-2" />
+		<table name="csb_sort" type="global" dataNode="bss_dn$1-2" />
+		<!-- cpc全局表 -->
+		<table name="offer_add_cfg" type="global" dataNode="bss_dn$1-2" />
+		<table name="offer_comp_role" type="global" dataNode="bss_dn$1-2" />
+		<table name="offer_pricing_relation" type="global" dataNode="bss_dn$1-2" />
+		<table name="offer_prod_attr_rel" type="global" dataNode="bss_dn$1-2" />
+		<table name="offer_prod_rel" type="global" dataNode="bss_dn$1-2" />
+		<table name="offer_prod_rela" type="global" dataNode="bss_dn$1-2" />
+		<table name="offer_prod_rel_role" type="global" dataNode="bss_dn$1-2" />
+		<table name="offer_prod_rel_role_rel" type="global" dataNode="bss_dn$1-2" />
+		<table name="offer_prod_service_rel" type="global" dataNode="bss_dn$1-2" />
+		<table name="offer_relation_def" type="global" dataNode="bss_dn$1-2" />
+		<table name="offer_relation_restricted" type="global" dataNode="bss_dn$1-2" />
+		<table name="offer_service_rel" type="global" dataNode="bss_dn$1-2" />
+		<table name="offer_terminal_scale" type="global" dataNode="bss_dn$1-2" />
+		<table name="offer_warr_requement" type="global" dataNode="bss_dn$1-2" />
+		<table name="product" type="global" dataNode="bss_dn$1-2" />
+		<table name="product_adsc" type="global" dataNode="bss_dn$1-2" />
+		<table name="product_attr" type="global" dataNode="bss_dn$1-2" />
+		<table name="product_attr_number_rel" type="global" dataNode="bss_dn$1-2" />
+		<table name="product_attr_region_config" type="global" dataNode="bss_dn$1-2" />
+		<table name="product_catalog_item_bureau" type="global" dataNode="bss_dn$1-2" />
+		<table name="product_catalog_item_element" type="global" dataNode="bss_dn$1-2" />
+		<table name="product_catalog_item_role" type="global" dataNode="bss_dn$1-2" />
+		<table name="product_conf_group" type="global" dataNode="bss_dn$1-2" />
+		<table name="product_distributor" type="global" dataNode="bss_dn$1-2" />
+		<table name="product_ent" type="global" dataNode="bss_dn$1-2" />
+		<table name="product_ext_attr" type="global" dataNode="bss_dn$1-2" />
+		<table name="product_family" type="global" dataNode="bss_dn$1-2" />
+		<table name="product_feature" type="global" dataNode="bss_dn$1-2" />
+		<table name="product_group_member" type="global" dataNode="bss_dn$1-2" />
+		<table name="product_group_relation" type="global" dataNode="bss_dn$1-2" />
+		<table name="product_group_type" type="global" dataNode="bss_dn$1-2" />
+		<table name="product_number_req" type="global" dataNode="bss_dn$1-2" />
+		<table name="product_offer_act" type="global" dataNode="bss_dn$1-2" />
+		<table name="product_offer_cat" type="global" dataNode="bss_dn$1-2" />
+		<table name="product_offer_credit" type="global" dataNode="bss_dn$1-2" />
+		<table name="product_offer_detail_base" type="global" dataNode="bss_dn$1-2" />
+		<table name="product_offer_feature" type="global" dataNode="bss_dn$1-2" />
+		<table name="product_offer_group_relation" type="global" dataNode="bss_dn$1-2" />
+		<table name="product_offer_hint" type="global" dataNode="bss_dn$1-2" />
+		<table name="product_offer_map" type="global" dataNode="bss_dn$1-2" />
+		<table name="product_offer_priority" type="global" dataNode="bss_dn$1-2" />
+		<table name="product_offer_relation_group" type="global" dataNode="bss_dn$1-2" />
+		<table name="product_offer_service" type="global" dataNode="bss_dn$1-2" />
+		<table name="product_offer_service_inherit" type="global" dataNode="bss_dn$1-2" />
+		<table name="product_provider" type="global" dataNode="bss_dn$1-2" />
+		<table name="product_region" type="global" dataNode="bss_dn$1-2" />
+		<table name="product_relation" type="global" dataNode="bss_dn$1-2" />
+		<table name="product_relation_adsc" type="global" dataNode="bss_dn$1-2" />
+		<table name="product_relation_attr" type="global" dataNode="bss_dn$1-2" />
+		<table name="product_relation_feature" type="global" dataNode="bss_dn$1-2" />
+		<table name="product_relation_group" type="global" dataNode="bss_dn$1-2" />
+		<table name="product_relation_role" type="global" dataNode="bss_dn$1-2" />
+		<table name="product_relation_type" type="global" dataNode="bss_dn$1-2" />
+		<table name="product_state_ref" type="global" dataNode="bss_dn$1-2" />
+		<table name="prod_attr_rela" type="global" dataNode="bss_dn$1-2" />
+		<table name="prod_attr_value" type="global" dataNode="bss_dn$1-2" />
+		<table name="prod_catalog_location" type="global" dataNode="bss_dn$1-2" />
+		<table name="prod_char_value_restrict" type="global" dataNode="bss_dn$1-2" />
+		<table name="prod_comp_detail" type="global" dataNode="bss_dn$1-2" />
+		<table name="prod_comp_detail_role" type="global" dataNode="bss_dn$1-2" />
+		<table name="prod_mkt_res_rel" type="global" dataNode="bss_dn$1-2" />
+		<table name="prod_mkt_res_rela" type="global" dataNode="bss_dn$1-2" />
+		<table name="prod_offer" type="global" dataNode="bss_dn$1-2" />
+		<table name="prod_offer_assure_demand" type="global" dataNode="bss_dn$1-2" />
+		<table name="prod_offer_attr" type="global" dataNode="bss_dn$1-2" />
+		<table name="prod_offer_attr_comments" type="global" dataNode="bss_dn$1-2" />
+		<table name="prod_offer_attr_rela" type="global" dataNode="bss_dn$1-2" />
+		<table name="prod_offer_attr_value" type="global" dataNode="bss_dn$1-2" />
+		<table name="prod_offer_channel" type="global" dataNode="bss_dn$1-2" />
+		<table name="prod_offer_cust_group" type="global" dataNode="bss_dn$1-2" />
+		<table name="prod_offer_distributor" type="global" dataNode="bss_dn$1-2" />
+		<table name="prod_offer_nbr_seg" type="global" dataNode="bss_dn$1-2" />
+		<table name="prod_offer_nolevel_rule" type="global" dataNode="bss_dn$1-2" />
+		<table name="prod_offer_nolevel_rule_1105" type="global" dataNode="bss_dn$1-2" />
+		<table name="prod_offer_para" type="global" dataNode="bss_dn$1-2" />
+		<table name="prod_offer_para_rela" type="global" dataNode="bss_dn$1-2" />
+		<table name="prod_offer_period" type="global" dataNode="bss_dn$1-2" />
+		<table name="prod_offer_privilege" type="global" dataNode="bss_dn$1-2" />
+		<table name="prod_offer_region" type="global" dataNode="bss_dn$1-2" />
+		<table name="prod_offer_rel" type="global" dataNode="bss_dn$1-2" />
+		<table name="prod_offer_rel_role" type="global" dataNode="bss_dn$1-2" />
+		<table name="prod_offer_res_rel" type="global" dataNode="bss_dn$1-2" />
+		<table name="prod_offer_res_rela" type="global" dataNode="bss_dn$1-2" />
+		<table name="prod_offer_sale_role" type="global" dataNode="bss_dn$1-2" />
+		<table name="prod_offer_time" type="global" dataNode="bss_dn$1-2" />
+		<table name="prod_service_offer" type="global" dataNode="bss_dn$1-2" />
+		
+		<!-- 客户表分片策略 -->
+		<table name="customer" dataNode="bss_dn$1-2" rule="customer_rule" primaryKey="cust_id">
+			<!-- 客户属性 -->
+			<childTable name="cust_attr" primaryKey="cust_attr_id" joinKey="cust_id" parentKey="cust_id"/>
+			<!-- 客户品牌 -->
+			<childTable name="cust_brand" primaryKey="cust_brand_id" joinKey="cust_id" parentKey="cust_id"/>	
+			<!-- 客户联系信息 -->
+			<childTable name="cust_contact_info_rel" primaryKey="contact_id" joinKey="cust_id" parentKey="cust_id"/>
+			<!-- 客户群成员 -->
+			<childTable name="cust_group_member" primaryKey="cust_group_member_id" joinKey="cust_id" parentKey="cust_id"/>
+			<!-- 账户 -->
+			<childTable name="account" primaryKey="acct_id" joinKey="cust_id" parentKey="cust_id" />
+			<!--<childTable name="account_ext"  primaryKey="acct_id" joinKey="cust_id" parentKey="cust_id"/> --><!-- 主键：ACCT_ID, SEQ_NBR -->
+			<!-- 支付方案 -->
+			<childTable name="payment_plan"  primaryKey="payment_plan_id" joinKey="cust_id" parentKey="cust_id"/>
+			<!-- 外部支付帐号 -->
+			<childTable name="ext_acct" primaryKey="ext_acct_id" joinKey="cust_id" parentKey="cust_id"/>
+			<!-- 信用度  -->
+			<childTable name="credit" primaryKey="credit_id" joinKey="cust_id" parentKey="cust_id"  />
+			<childTable name="credit_ext" primaryKey="credit_id"  joinKey="cust_id" parentKey="cust_id" />
+			<!-- 客户服务级别 -->
+			<childTable name="service_grade" primaryKey="service_grade_id"  joinKey="cust_id" parentKey="cust_id"  />
+			<!-- 客户关键人 -->
+			<childTable name="cust_key_person_rel" primaryKey="cust_key_person_rel_id" joinKey="cust_id" parentKey="cust_id" />
+			<!-- 客户信用额度  -->
+			<childTable name="credit_limit" primaryKey="credit_limit_id"  joinKey="cust_id" parentKey="cust_id" />
+			<childTable name="credit_limit_ext" primaryKey="credit_limit_id" joinKey="cust_id" parentKey="cust_id" />
+			<!-- 临时信用度  -->
+			<!--  <childTable name="temp_credit_limit" /> --><!-- 缺表 -->
+			<!-- 临时信用额度  -->
+			<childTable name="temporary_credit_limit" primaryKey="temporary_credit_limit_id" joinKey="cust_id" parentKey="cust_id" />
+			<childTable name="temporary_credit_limit_ext" primaryKey="temporary_credit_limit_id" joinKey="cust_id" parentKey="cust_id" />
+			<!-- 关键人 -->
+			<childTable name="key_person" primaryKey="key_person_id" joinKey="cust_id" parentKey="cust_id" />
+			<!-- <childTable name="key_person_attr" /> --> <!-- 缺表 -->
+			<!-- 其他 -->
+			<childTable name="cust_black_services"  joinKey="cust_id" parentKey="cust_id"/>
+			<childTable name="cust_growth_acct"  joinKey="cust_id" parentKey="cust_id" />
+			<childTable name="cust_growth_dim"  joinKey="cust_id" parentKey="cust_id" />
+			<childTable name="cust_high_point_bind" primaryKey="chpr_id" joinKey="cust_id" parentKey="cust_id"/>
+			<childTable name="cust_sevice_extend_info" primaryKey="service_id" joinKey="cust_id" parentKey="cust_id"/>
+			<!-- 客户关系 -->
+			<childTable name="cust_rel" primaryKey="cust_rel_id" joinKey="cust_a_id" parentKey="cust_a_id"/>
+			<!-- 特殊客户列表 -->
+			<childTable name="cust_special_list" primaryKey="cust_special_list_id" joinKey="cust_id" parentKey="cust_id"/>
+			<!-- 俱乐部会员 -->
+			<childTable name="club_member" primaryKey="club_id" joinKey="cust_id" parentKey="cust_id"/>
+			<!-- 俱乐部会员扩展属性 -->
+			<childTable name="member_extended_attr" primaryKey="club_member_attr_id" joinKey="cust_id" parentKey="cust_id"/>
+			<!-- 会员服务记录 -->
+			<childTable name="member_service_record" primaryKey="record_id" joinKey="cust_id" parentKey="cust_id"/>
+			<!-- 特殊名单 -->
+			<childTable name="special_list" primaryKey="special_list_id" joinKey="cust_id" parentKey="cust_id"/>
+			<!-- 积分账户 -->
+			<childTable name="point_acct"  primaryKey="point_acct_id" joinKey="cust_id" parentKey="cust_id"/>
+			<!-- 积分账本 -->
+			<childTable name="point_acct_balance" primaryKey="point_acct_balance_id" joinKey="cust_id" parentKey="cust_id"/>
+			<!-- 积分兑换记录 -->
+			<childTable name="point_exch_record" primaryKey="point_exch_record_id" joinKey="cust_id" parentKey="cust_id"/>
+			<!-- 积分服务记录 -->
+			<childTable name="point_service_rec" primaryKey="point_service_rec_id" joinKey="cust_id" parentKey="cust_id"/>
+			
+			<childTable name="inf_cust" primaryKey="serial_id" joinKey="cust_id" parentKey="cust_id"/>
+			<childTable name="inf_cust_credit" primaryKey="seq_id" joinKey="cust_id" parentKey="cust_id"/>
+		
+			<childTable name="c_cust_credit" joinKey="cust_id" parentKey="cust_id"/>
+			<childTable name="c_cust_creditaudit" joinKey="cust_id" parentKey="cust_id"/>
+		</table>
+
+		<!-- 账户 -->
+		<!-- <table name="account" dataNode="bss_dn$1-2" rule="customer_rule" primaryKey="acct_id"/> -->
+		<table name="account_ext" dataNode="bss_dn$1-2" rule="customer_rule" /><!-- 主键：ACCT_ID, SEQ_NBR -->
+		
+		<!-- 客户归档表分片策略 -->
+		<table name="customer_his" dataNode="bss_dn$1-2" rule="customer_rule" primaryKey="cust_id">
+			<!-- 客户品牌 -->
+			<childTable name="cust_brand_his" primaryKey="cust_brand_id" joinKey="cust_id" parentKey="cust_id"/>
+			<!-- 俱乐部会员 -->
+			<childTable name="club_member_his"  primaryKey="club_id" joinKey="cust_id" parentKey="cust_id"/>
+			<!-- 积分账户 -->
+			<childTable name="point_acct_his" primaryKey="point_acct_id" joinKey="cust_id" parentKey="cust_id"/>
+			<!-- 积分账本 -->
+			<childTable name="point_acct_balance_his" primaryKey="point_acct_balance_id" joinKey="cust_id" parentKey="cust_id"/> 
+		</table>
+		
+		<!-- 销售品实例表分片策略 -->
+		<table name="offer_inst" dataNode="bss_dn$1-2" rule="prod_offer_inst_rule" primaryKey="offer_inst_id">
+			<!-- 销售品实例属性 -->
+			<childTable name="offer_inst_attr" primaryKey="offer_inst_attr_id" joinKey="owner_cust_id" parentKey="offer_inst_id"/>
+			<!-- 销售品构成对象实例关系 -->
+			<childTable name="offer_obj_inst_rel"  primaryKey="offer_obj_inst_rel_id" joinKey="owner_cust_id" parentKey="offer_inst_id"/>
+			<!-- 销售品资源实例关系 -->
+			<childTable name="offer_res_inst_rel"  primaryKey="offer_obj_inst_rel_id" joinKey="owner_cust_id" parentKey="offer_inst_id"/>
+			<childTable name="offer_res_inst_rel_ext"  primaryKey="offer_obj_inst_rel_id" joinKey="owner_cust_id" parentKey="offer_inst_id"/>
+			<!-- 销售品实例营销资源实例关系属性 -->
+			<childTable name="offer_res_inst_rela_attr"  primaryKey="offer_res_inst_rela_attr_id" joinKey="owner_cust_id" parentKey="offer_inst_id"/>
+			<!-- 销售品担保信息 -->
+			<childTable name="offer_inst_assure"  primaryKey="offer_inst_assure_id" joinKey="owner_cust_id" parentKey="offer_inst_id"/>
+			<childTable name="offer_inst_assure_ext"  primaryKey="offer_inst_assure_ext_id" joinKey="owner_cust_id" parentKey="offer_inst_id"/>
+			<!-- 销售品营销资源实例回收信息 -->
+			<childTable name="offer_res_inst_recy"  primaryKey="recy_id" joinKey="owner_cust_id" parentKey="offer_inst_id"/>
+			<!-- 销售品实例关系 -->
+			<!--  <childTable name="offer_inst_rel"  primaryKey="offer_res_inst_rela_attr_id" /> -->
+		</table>
+		
+		<!-- 产品实例表分片策略 -->
+		<table name="prod_inst" dataNode="bss_dn$1-2" rule="prod_offer_inst_rule" primaryKey="prod_inst_id">
+			<!-- 产品实例属性 -->
+			<childTable name="prod_inst_attr" primaryKey="prod_inst_attr_id" joinKey="owner_cust_id" parentKey="prod_inst_id"/>
+			<!-- 产品实例扩展属性 -->
+			<childTable name="prod_inst_ext" primaryKey="xm_inst_id" joinKey="owner_cust_id" parentKey="prod_inst_id"/>
+			<!-- 产品实例关系 -->
+			<childTable name="prod_inst_rel" primaryKey="prod_inst_rel_id" joinKey="owner_cust_id" parentKey="a_prod_inst_id"/>
+			<!-- 产品实例号码 -->
+			<childTable name="prod_inst_acc_nbr" primaryKey="serv_acc_nbr_id" joinKey="owner_cust_id" parentKey="prod_inst_id"/>
+			<!-- 产品实例号码 -->
+			<childTable name="prod_inst_acc_num" primaryKey="prod_inst_acc_num_id" joinKey="owner_cust_id" parentKey="prod_inst_id"/>
+			<!-- 产品实例帐务定制关系 -->
+			<childTable name="prod_inst_acct_rel" primaryKey="serv_acct_rel_id" joinKey="owner_cust_id" parentKey="prod_inst_id"/>
+			<!-- 产品实例停机记录 -->
+			<childTable name="prod_inst_state" primaryKey="prod_inst_state_id" joinKey="owner_cust_id" parentKey="prod_inst_id"/>
+			<!-- 功能产品实例 -->
+			<childTable name="prod_inst_func" primaryKey="prod_inst_id" joinKey="owner_cust_id" parentKey="prod_inst_id"/>
+			<childTable name="prod_inst_func_ext" primaryKey="prod_inst_func_ext_id" joinKey="owner_cust_id" parentKey="prod_inst_id"/>
+			<!-- 实例预约续包年预存金额 -->
+			<childTable name="prod_inst_prepay_amt" primaryKey="prod_inst_prepay_id" joinKey="owner_cust_id" parentKey="prod_inst_id"/>
+			<!-- 产品营销资源实例关系 -->
+			<childTable name="prod_res_inst_rela" primaryKey="prod_res_inst_rela_id" joinKey="owner_cust_id" parentKey="prod_inst_id"/>
+		</table>
+				
+		<!-- 入网测试案例 -->
+		<table name="key_val_tab_log_2_1_2_2" dataNode="bss_dn1,bss_dn2" rule="key_val_tab_log_2_1_2_2_rule" primaryKey="log_id"/>
+		<table name="int_range_tab_log_2_1_2_3" dataNode="bss_dn1,bss_dn2" rule="int_range_tab_log_2_1_2_3_rule" primaryKey="log_id"/>
+		<table name="char_hash_tab_log_2_1_2_4" dataNode="bss_dn1,bss_dn2" rule="char_hash_tab_log_2_1_2_4_rule" primaryKey="log_id"/>
+		<table name="cust_tab_log_2_1_2_5" dataNode="bss_dn1,bss_dn2" rule="cust_tab_log_2_1_2_5_rule" primaryKey="log_id"/>
+		
+		<!-- cust_dev尚未整理的表 -->
+		<table name="app_cust_fax_info" dataNode="bss_dn$1-2" />
+		<table name="app_cust_fax_info_log" dataNode="bss_dn$1-2" />
+		<table name="authen_info" dataNode="bss_dn$1-2" />
+		<table name="balance_acct_item_payed" dataNode="bss_dn$1-2" />
+		<table name="bank" dataNode="bss_dn$1-2" />
+		<table name="batch_cust_mod" dataNode="bss_dn$1-2" />
+		<table name="bm_imp_excel_fail" dataNode="bss_dn$1-2" />
+		<table name="bm_imp_excel_suc" dataNode="bss_dn$1-2" />
+		<table name="bm_imp_seq_manage" dataNode="bss_dn$1-2" />
+		<table name="bonus_acct_type" dataNode="bss_dn$1-2" />
+		<table name="bonus_cons_log" dataNode="bss_dn$1-2" />
+		<table name="bonus_ret_rule" dataNode="bss_dn$1-2" />
+		<table name="bonus_ret_rule_ext" dataNode="bss_dn$1-2" />
+		<table name="brand" dataNode="bss_dn$1-2" />
+		<table name="call_service_config" dataNode="bss_dn$1-2" />
+		<table name="cl_idcard_verify" dataNode="bss_dn$1-2" />
+		<table name="cm_parameter" dataNode="bss_dn$1-2" />
+		<table name="con_handler" dataNode="bss_dn$1-2" />
+		<table name="con_plan" dataNode="bss_dn$1-2" />
+		<table name="credit_warning_rule" dataNode="bss_dn$1-2" />
+		<table name="c_adsl_fee_credit_acct" dataNode="bss_dn$1-2" />
+		<table name="c_adsl_fee_credit_acct_log" dataNode="bss_dn$1-2" />
+		<table name="c_bonus_bill" dataNode="bss_dn$1-2" />
+		<table name="c_coupon_code_mgr" dataNode="bss_dn$1-2" />
+		<table name="c_cust_creditaudit_log" dataNode="bss_dn$1-2" />
+		<table name="c_cust_credit_log" dataNode="bss_dn$1-2" />
+		<table name="c_cust_importaudit" dataNode="bss_dn$1-2" />
+		<table name="c_dota_credit_acct" dataNode="bss_dn$1-2" />
+		<table name="c_edw_credit_acct" dataNode="bss_dn$1-2" />
+		<table name="c_edw_credit_acct_log" dataNode="bss_dn$1-2" />
+		<table name="c_idcard_verify" dataNode="bss_dn$1-2" />
+		<table name="c_idcard_verify_img" dataNode="bss_dn$1-2" />
+		<table name="c_init_credit_acct_log" dataNode="bss_dn$1-2" />
+		<table name="c_init_credit_rule" dataNode="bss_dn$1-2" />
+		<table name="c_ods_temp_credit_acct" dataNode="bss_dn$1-2" />
+		<table name="c_ods_temp_credit_acct_log" dataNode="bss_dn$1-2" />
+		<table name="c_owe_cust" dataNode="bss_dn$1-2" />
+		<table name="c_rule_right_rela" dataNode="bss_dn$1-2" />
+		<table name="c_rule_spend_rela" dataNode="bss_dn$1-2" />
+		<table name="c_rule_user_rela" dataNode="bss_dn$1-2" />
+		<table name="c_spec_credit_acct" dataNode="bss_dn$1-2" />
+		<table name="c_spec_credit_acct_log" dataNode="bss_dn$1-2" />
+		<table name="c_spec_credit_rule" dataNode="bss_dn$1-2" />
+		<table name="c_temp_credit_acct_log" dataNode="bss_dn$1-2" />
+		<table name="c_temp_credit_rule" dataNode="bss_dn$1-2" />
+		<table name="c_user_list_flow" dataNode="bss_dn$1-2" />
+		<table name="c_user_list_term" dataNode="bss_dn$1-2" />
+		<table name="c_video_flow_card" dataNode="bss_dn$1-2" />
+		<table name="credit_limit_log"  dataNode="bss_dn$1-2" />
+		<table name="customer_order_imageverify" dataNode="bss_dn$1-2" />
+		<table name="cust_adsl_service" dataNode="bss_dn$1-2" />
+		<table name="cust_group" dataNode="bss_dn$1-2" />
+		<table name="cust_group_feature" dataNode="bss_dn$1-2" />
+		<table name="cust_high_point_bind_log" dataNode="bss_dn$1-2" />
+		<table name="cust_industry_type" dataNode="bss_dn$1-2" />
+		<table name="cust_key_industry_rel" dataNode="bss_dn$1-2" />
+		<table name="cust_rel_log" dataNode="bss_dn$1-2" />
+		<table name="cust_simple_log" dataNode="bss_dn$1-2" />
+		<table name="deal_edw_prd_credit_evalu_log" dataNode="bss_dn$1-2" />
+		<table name="deal_member_grade_result_log" dataNode="bss_dn$1-2" />
+		<table name="epay_acct_rule" dataNode="bss_dn$1-2" />
+		<table name="fyg_club_member" dataNode="bss_dn$1-2" />
+		<table name="fyg_c_bonus_bill" dataNode="bss_dn$1-2" />
+		<table name="fyg_member_account_value" dataNode="bss_dn$1-2" />
+		<table name="fyg_member_gold_acct_bala" dataNode="bss_dn$1-2" />
+		<table name="fyg_member_gold_value" dataNode="bss_dn$1-2" />
+		<table name="fyg_member_growup_value" dataNode="bss_dn$1-2" />
+		<table name="group_pay_limit" dataNode="bss_dn$1-2" />
+		<table name="his_inf_starlevel_fromods" dataNode="bss_dn$1-2" />
+		<table name="his_point_account" dataNode="bss_dn$1-2" />
+		<table name="his_point_acct_bala" dataNode="bss_dn$1-2" />
+		<table name="inf_service" dataNode="bss_dn$1-2" />
+		<table name="inf_temp_credit_acct" dataNode="bss_dn$1-2" />
+		<table name="key_person_rel" dataNode="bss_dn$1-2" />
+		<table name="lottery_info" dataNode="bss_dn$1-2" />
+		<table name="lottery_num_lan" dataNode="bss_dn$1-2" />
+		<table name="lottery_select_data" dataNode="bss_dn$1-2" />
+		<table name="lottery_winner_data" dataNode="bss_dn$1-2" />
+		<table name="lottery_winner_info" dataNode="bss_dn$1-2" />
+		<table name="l_fyg_club_member" dataNode="bss_dn$1-2" />
+		<table name="l_inf_nacert_opertion_queue" dataNode="bss_dn$1-2" />
+		<table name="l_mb_info" dataNode="bss_dn$1-2" />
+		<table name="l_mb_starlevel_serv_inst" dataNode="bss_dn$1-2" />
+		<table name="mbr_service_catalog_loc" dataNode="bss_dn$1-2" />
+		<table name="mb_batch_app_card" dataNode="bss_dn$1-2" />
+		<table name="mb_card_log" dataNode="bss_dn$1-2" />
+		<table name="mb_info_log" dataNode="bss_dn$1-2" />
+		<table name="mb_info_sub" dataNode="bss_dn$1-2" />
+		<table name="mb_person" dataNode="bss_dn$1-2" />
+		<table name="mb_person_log" dataNode="bss_dn$1-2" />
+		<table name="member_action_record" dataNode="bss_dn$1-2" />
+		<table name="member_assess_record" dataNode="bss_dn$1-2" />
+		<table name="member_card_grant_record" dataNode="bss_dn$1-2" />
+		<table name="member_change_record" dataNode="bss_dn$1-2" />
+		<table name="mem_serv_acct" dataNode="bss_dn$1-2" />
+		<table name="mem_serv_acct_his" dataNode="bss_dn$1-2" />
+		<table name="merger_cust_point" dataNode="bss_dn$1-2" />
+		<table name="mobile_message_config" dataNode="bss_dn$1-2" />
+		<table name="object_label_rel" dataNode="bss_dn$1-2" />
+		<table name="ord_account" dataNode="bss_dn$1-2" />
+		<table name="oth_code_relation" dataNode="bss_dn$1-2" />
+		<table name="payment" dataNode="bss_dn$1-2" />
+		<table name="payment_method" dataNode="bss_dn$1-2" />
+		<table name="pay_mode_detail" dataNode="bss_dn$1-2" />
+		<table name="point_account_merger_log" dataNode="bss_dn$1-2" />
+		<table name="point_acct_balance_manage" dataNode="bss_dn$1-2" />
+		<table name="point_acct_balance_manage_his" dataNode="bss_dn$1-2" />
+		<table name="point_acct_bala_chng_rec" dataNode="bss_dn$1-2" />
+		<table name="point_acct_bala_merger_log" dataNode="bss_dn$1-2" />
+		<table name="point_acct_chng_rec" dataNode="bss_dn$1-2" />
+		<table name="point_acct_clear_log" dataNode="bss_dn$1-2" />
+		<table name="point_balance_payout" dataNode="bss_dn$1-2" />
+		<table name="point_balance_source" dataNode="bss_dn$1-2" />
+		<table name="point_business" dataNode="bss_dn$1-2" />
+		<table name="point_business_aprov_log" dataNode="bss_dn$1-2" />
+		<table name="point_exchange_detail" dataNode="bss_dn$1-2" />
+		<table name="point_exch_cond" dataNode="bss_dn$1-2" />
+		<table name="point_exch_goods" dataNode="bss_dn$1-2" />
+		<table name="point_exch_goods_ctlg" dataNode="bss_dn$1-2" />
+		<table name="point_exch_obj" dataNode="bss_dn$1-2" />
+		<table name="point_exch_obj_comp" dataNode="bss_dn$1-2" />
+		<table name="point_exch_obj_cond_rel" dataNode="bss_dn$1-2" />
+		<table name="point_exch_obj_ctlg" dataNode="bss_dn$1-2" />
+		<table name="point_exch_rec_detail" dataNode="bss_dn$1-2" />
+		<table name="point_frozen_record" dataNode="bss_dn$1-2" />
+		<table name="point_redeem_print_record" dataNode="bss_dn$1-2" />
+		<table name="point_type" dataNode="bss_dn$1-2" />
+		<table name="point_type_group" dataNode="bss_dn$1-2" />
+		<table name="point_type_group_mbr" dataNode="bss_dn$1-2" />
+		<table name="pre_cust_info" dataNode="bss_dn$1-2" />
+		<table name="prod_offer_point_rela" dataNode="bss_dn$1-2" />
+		<table name="special_reqmt_ind" dataNode="bss_dn$1-2" />
+		<table name="sql_stack_err_config" dataNode="bss_dn$1-2" />
+		<table name="sql_stack_service_config" dataNode="bss_dn$1-2" />
+		<table name="storage_res_limit" dataNode="bss_dn$1-2" />
+		<table name="system_authen_info_rel" dataNode="bss_dn$1-2" />
+		<!-- <table name="sys_export_schema_01" dataNode="bss_dn$1-2" />
+		<table name="sys_export_schema_02" dataNode="bss_dn$1-2" />
+		<table name="sys_export_schema_03" dataNode="bss_dn$1-2" /> -->
+		<table name="table_ind_cust" dataNode="bss_dn$1-2" />
+		<table name="tax_payer" dataNode="bss_dn$1-2" />
+		<table name="tax_payer_attr" dataNode="bss_dn$1-2" />
+		<table name="temporary_credit_limit_log" dataNode="bss_dn$1-2" />
+		<table name="temp_cust_dev" dataNode="bss_dn$1-2" />
+		<table name="temp_cust_dev_new" dataNode="bss_dn$1-2" />
+		<table name="temp_table" dataNode="bss_dn$1-2" />
+		<table name="temp_table_column" dataNode="bss_dn$1-2" />
+		<table name="view_block_item_rel" dataNode="bss_dn$1-2" />
+		<table name="view_data_block" dataNode="bss_dn$1-2" />
+		<table name="view_data_block_action" dataNode="bss_dn$1-2" />
+		<table name="view_data_item" dataNode="bss_dn$1-2" />
+		<table name="view_data_item_indiv" dataNode="bss_dn$1-2" />
+		<table name="view_first_load_service" dataNode="bss_dn$1-2" />
+		<table name="view_item_rel_add" dataNode="bss_dn$1-2" />
+		<table name="view_query_variable" dataNode="bss_dn$1-2" />
+		<table name="view_query_wizard" dataNode="bss_dn$1-2" />
+		<table name="view_query_wizard_condition" dataNode="bss_dn$1-2" />
+		<table name="view_query_wizard_config" dataNode="bss_dn$1-2" />
+		
+		<!-- jk_dev尚未整理的表 -->
+		<table name="bill_ext" dataNode="bss_dn$1-2" />
+		<table name="cepex_config" dataNode="bss_dn$1-2" />
+		<table name="cepex_config_0817" dataNode="bss_dn$1-2" />
+		<table name="cepex_config_bak" dataNode="bss_dn$1-2" />
+		<table name="cepex_function_config" dataNode="bss_dn$1-2" />
+		<table name="cepex_general_code_map" dataNode="bss_dn$1-2" />
+		<table name="cepex_order_change_errors" dataNode="bss_dn$1-2" />
+		<table name="cepex_order_exception" dataNode="bss_dn$1-2" />
+		<table name="cepex_order_finish_xml" dataNode="bss_dn$1-2" />
+		<table name="cepex_order_map" dataNode="bss_dn$1-2" />
+		<table name="cepex_prod_inst_active" dataNode="bss_dn$1-2" />
+		<table name="cepex_province_lte_order" dataNode="bss_dn$1-2" />
+		<table name="cepex_query_ext" dataNode="bss_dn$1-2" />
+		<table name="cepex_services_xml" dataNode="bss_dn$1-2" />
+		<table name="cepex_soorule_timeout_log" dataNode="bss_dn$1-2" />
+		<table name="cepex_soo_info" dataNode="bss_dn$1-2" />
+		<table name="cepex_soo_order_ext" dataNode="bss_dn$1-2" />
+		<table name="cepex_sort" dataNode="bss_dn$1-2" />
+		<table name="cepex_svc_engine" dataNode="bss_dn$1-2" />
+		<table name="channel_staff_role" dataNode="bss_dn$1-2" />
+		<table name="cj_inf_bill_obj" dataNode="bss_dn$1-2" />
+		<table name="cj_inf_bill_offer_attr_info" dataNode="bss_dn$1-2" />
+		<table name="cj_inf_bill_offer_instance" dataNode="bss_dn$1-2" />
+		<table name="cj_inf_bill_order" dataNode="bss_dn$1-2" />
+		<table name="cj_inf_bill_order_item_info" dataNode="bss_dn$1-2" />
+		<table name="cj_inf_bill_para_info" dataNode="bss_dn$1-2" />
+		<table name="cj_inf_bill_serv_attr" dataNode="bss_dn$1-2" />
+		<table name="cj_inf_bill_serv_info" dataNode="bss_dn$1-2" />
+		<table name="cj_inf_bill_serv_prod_attr" dataNode="bss_dn$1-2" />
+		<table name="cj_inf_bill_serv_prod_info" dataNode="bss_dn$1-2" />
+		<table name="contact_medium" dataNode="bss_dn$1-2" />
+		<table name="crm_job_clustor" dataNode="bss_dn$1-2" />
+		<table name="crm_job_run_log" dataNode="bss_dn$1-2" />
+		<table name="cust_growth_acct_his" dataNode="bss_dn$1-2" />
+		<table name="dc_public_dup" dataNode="bss_dn$1-2" />
+		<table name="dic_co_busi_dispatch_shop_col" dataNode="bss_dn$1-2" />
+		<table name="eda_member_grade_result_a5" dataNode="bss_dn$1-2" />
+		<table name="edw_up_crm_flag" dataNode="bss_dn$1-2" />
+		<table name="ext_sys_oper_info" dataNode="bss_dn$1-2" />
+		<table name="guwangzhangduan_sale" dataNode="bss_dn$1-2" />
+		<table name="his_inf_serv_state_pstn" dataNode="bss_dn$1-2" />
+		<table name="hu_inf_bill_order" dataNode="bss_dn$1-2" />
+		<table name="infl_bill_acct_info" dataNode="bss_dn$1-2" />
+		<table name="infl_bill_cell_group" dataNode="bss_dn$1-2" />
+		<table name="infl_bill_charge_detail" dataNode="bss_dn$1-2" />
+		<table name="infl_bill_contact_info" dataNode="bss_dn$1-2" />
+		<table name="infl_bill_corp_info" dataNode="bss_dn$1-2" />
+		<table name="infl_bill_credit_limit" dataNode="bss_dn$1-2" />
+		<table name="infl_bill_cust_info" dataNode="bss_dn$1-2" />
+		<table name="infl_bill_group" dataNode="bss_dn$1-2" />
+		<table name="infl_bill_identity_info" dataNode="bss_dn$1-2" />
+		<table name="infl_bill_member_attr" dataNode="bss_dn$1-2" />
+		<table name="infl_bill_nbr_group" dataNode="bss_dn$1-2" />
+		<table name="infl_bill_obj" dataNode="bss_dn$1-2" />
+		<table name="infl_bill_offer_attr_info" dataNode="bss_dn$1-2" />
+		<table name="infl_bill_offer_instance" dataNode="bss_dn$1-2" />
+		<table name="infl_bill_order" dataNode="bss_dn$1-2" />
+		<table name="infl_bill_order_item_info" dataNode="bss_dn$1-2" />
+		<table name="infl_bill_para_info" dataNode="bss_dn$1-2" />
+		<table name="infl_bill_pay_plan" dataNode="bss_dn$1-2" />
+		<table name="infl_bill_personal_info" dataNode="bss_dn$1-2" />
+		<table name="infl_bill_serv_acct" dataNode="bss_dn$1-2" />
+		<table name="infl_bill_serv_add_acc_nbr" dataNode="bss_dn$1-2" />
+		<table name="infl_bill_serv_attr" dataNode="bss_dn$1-2" />
+		<table name="infl_bill_serv_flexible_cycle" dataNode="bss_dn$1-2" />
+		<table name="infl_bill_serv_info" dataNode="bss_dn$1-2" />
+		<table name="infl_bill_serv_member" dataNode="bss_dn$1-2" />
+		<table name="infl_bill_serv_prod_attr" dataNode="bss_dn$1-2" />
+		<table name="infl_bill_serv_prod_info" dataNode="bss_dn$1-2" />
+		<table name="infl_bill_serv_related" dataNode="bss_dn$1-2" />
+		<table name="infl_bill_serv_rlated" dataNode="bss_dn$1-2" />
+		<table name="infl_bill_settlementrela" dataNode="bss_dn$1-2" />
+		<table name="infl_bill_tran_offer" dataNode="bss_dn$1-2" />
+		<table name="infl_crm_cust_order" dataNode="bss_dn$1-2" />
+		<table name="infl_crm_product_order" dataNode="bss_dn$1-2" />
+		<table name="infl_dep_term_key_info" dataNode="bss_dn$1-2" />
+		<table name="infl_dep_term_upload" dataNode="bss_dn$1-2" />
+		<table name="infl_finish_flow" dataNode="bss_dn$1-2" />
+		<table name="infl_finish_flow_state" dataNode="bss_dn$1-2" />
+		<table name="infl_pf_rep" dataNode="bss_dn$1-2" />
+		<table name="infl_serv_state_adsl" dataNode="bss_dn$1-2" />
+		<table name="infl_serv_state_cdma" dataNode="bss_dn$1-2" />
+		<table name="infl_serv_state_pstn" dataNode="bss_dn$1-2" />
+		<table name="infl_short_msg_queue" dataNode="bss_dn$1-2" />
+		<table name="infl_uam_sendperpare_info" dataNode="bss_dn$1-2" />
+		<table name="infl_udb_sendperpare_info" dataNode="bss_dn$1-2" />
+		<table name="infl_uvc_serv" dataNode="bss_dn$1-2" />
+		<table name="infl_wq_finish" dataNode="bss_dn$1-2" />
+		<table name="inf_account_check" dataNode="bss_dn$1-2" />
+		<table name="inf_account_check_log" dataNode="bss_dn$1-2" />
+		<table name="inf_agentdeposit_report" dataNode="bss_dn$1-2" />
+		<table name="inf_all_dragon_terimal" dataNode="bss_dn$1-2" />
+		<table name="inf_audit_bill_fee_info" dataNode="bss_dn$1-2" />
+		<table name="inf_bill_acct_info" dataNode="bss_dn$1-2" />
+		<table name="inf_bill_acct_info_temp" dataNode="bss_dn$1-2" />
+		<table name="inf_bill_cell_group" dataNode="bss_dn$1-2" />
+		<table name="inf_bill_charge_detail" dataNode="bss_dn$1-2" />
+		<table name="inf_bill_contact_info" dataNode="bss_dn$1-2" />
+		<table name="inf_bill_corp_info" dataNode="bss_dn$1-2" />
+		<table name="inf_bill_credit_limit" dataNode="bss_dn$1-2" />
+		<table name="inf_bill_cust_info" dataNode="bss_dn$1-2" />
+		<table name="inf_bill_ewallet_info" dataNode="bss_dn$1-2" />
+		<table name="inf_bill_func_config" dataNode="bss_dn$1-2" />
+		<table name="inf_bill_group" dataNode="bss_dn$1-2" />
+		<table name="inf_bill_group_product_map" dataNode="bss_dn$1-2" />
+		<table name="inf_bill_group_region_map" dataNode="bss_dn$1-2" />
+		<table name="inf_bill_identity_info" dataNode="bss_dn$1-2" />
+		<table name="inf_bill_member_attr" dataNode="bss_dn$1-2" />
+		<table name="inf_bill_mix_oper" dataNode="bss_dn$1-2" />
+		<table name="inf_bill_nbr_group" dataNode="bss_dn$1-2" />
+		<table name="inf_bill_no_validate" dataNode="bss_dn$1-2" />
+		<table name="inf_bill_obj" dataNode="bss_dn$1-2" />
+		<table name="inf_bill_offer_attr_info" dataNode="bss_dn$1-2" />
+		<table name="inf_bill_offer_instance" dataNode="bss_dn$1-2" />
+		<table name="inf_bill_offer_param_info" dataNode="bss_dn$1-2" />
+		<table name="inf_bill_order" dataNode="bss_dn$1-2" />
+		<table name="inf_bill_order_item_info" dataNode="bss_dn$1-2" />
+		<table name="inf_bill_org_area_map" dataNode="bss_dn$1-2" />
+		<table name="inf_bill_para_info" dataNode="bss_dn$1-2" />
+		<table name="inf_bill_pay_plan" dataNode="bss_dn$1-2" />
+		<table name="inf_bill_personal_info" dataNode="bss_dn$1-2" />
+		<table name="inf_bill_serv_acct" dataNode="bss_dn$1-2" />
+		<table name="inf_bill_serv_add_acc_nbr" dataNode="bss_dn$1-2" />
+		<table name="inf_bill_serv_attr" dataNode="bss_dn$1-2" />
+		<table name="inf_bill_serv_flexible_cycle" dataNode="bss_dn$1-2" />
+		<table name="inf_bill_serv_info" dataNode="bss_dn$1-2" />
+		<table name="inf_bill_serv_member" dataNode="bss_dn$1-2" />
+		<table name="inf_bill_serv_prod_attr" dataNode="bss_dn$1-2" />
+		<table name="inf_bill_serv_prod_info" dataNode="bss_dn$1-2" />
+		<table name="inf_bill_serv_related" dataNode="bss_dn$1-2" />
+		<table name="inf_bill_settlementrela" dataNode="bss_dn$1-2" />
+		<table name="inf_bill_tran_offer" dataNode="bss_dn$1-2" />
+		<table name="inf_bill_tran_offer_relation" dataNode="bss_dn$1-2" />
+		<table name="inf_cache_config" dataNode="bss_dn$1-2" />
+		<table name="inf_cc_captchacode" dataNode="bss_dn$1-2" />
+		<table name="inf_cepex_channel_order" dataNode="bss_dn$1-2" />
+		<table name="inf_cep_acct_item" dataNode="bss_dn$1-2" />
+		<table name="inf_common_config" dataNode="bss_dn$1-2" />
+		<table name="inf_comm_client_calllog" dataNode="bss_dn$1-2" />
+		<table name="inf_comm_client_endpoint" dataNode="bss_dn$1-2" />
+		<table name="inf_comm_client_gvar" dataNode="bss_dn$1-2" />
+		<table name="inf_comm_client_log_col" dataNode="bss_dn$1-2" />
+		<table name="inf_comm_client_operation" dataNode="bss_dn$1-2" />
+		<table name="inf_comm_client_request" dataNode="bss_dn$1-2" />
+		<table name="inf_comm_client_response" dataNode="bss_dn$1-2" />
+		<table name="inf_comm_code_rela" dataNode="bss_dn$1-2" />
+		<table name="inf_comm_server" dataNode="bss_dn$1-2" />
+		<table name="inf_comm_server_log" dataNode="bss_dn$1-2" />
+		<table name="inf_comm_server_operation" dataNode="bss_dn$1-2" />
+		<table name="inf_co_busi_dispatch_shop" dataNode="bss_dn$1-2" />
+		<table name="inf_crm_cust_order" dataNode="bss_dn$1-2" />
+		<table name="inf_crm_product_order" dataNode="bss_dn$1-2" />
+		<table name="inf_ct10000_sale_opt_pkg" dataNode="bss_dn$1-2" />
+		<!-- <table name="inf_cust" dataNode="bss_dn$1-2" />
+		<table name="inf_cust_credit" dataNode="bss_dn$1-2" /> -->
+		<table name="inf_cust_fax_info" dataNode="bss_dn$1-2" />
+		<table name="inf_cust_fax_info_log" dataNode="bss_dn$1-2" />
+		<table name="inf_datas_load_info" dataNode="bss_dn$1-2" />
+		<table name="inf_data_content" dataNode="bss_dn$1-2" />
+		<table name="inf_data_item" dataNode="bss_dn$1-2" />
+		<table name="inf_data_item_content" dataNode="bss_dn$1-2" />
+		<table name="inf_data_item_detail" dataNode="bss_dn$1-2" />
+		<table name="inf_data_item_rela" dataNode="bss_dn$1-2" />
+		<table name="inf_data_view" dataNode="bss_dn$1-2" />
+		<table name="inf_data_view_item" dataNode="bss_dn$1-2" />
+		<table name="inf_db_datasource" dataNode="bss_dn$1-2" />
+		<table name="inf_db_mappedstmt" dataNode="bss_dn$1-2" />
+		<table name="inf_db_mappedstmt_backup" dataNode="bss_dn$1-2" />
+		<table name="inf_dc_bill_process_param" dataNode="bss_dn$1-2" />
+		<table name="inf_dc_public" dataNode="bss_dn$1-2" />
+		<table name="inf_define" dataNode="bss_dn$1-2" />
+		<table name="inf_dep_cloub_card_finish_log" dataNode="bss_dn$1-2" />
+		<table name="inf_dep_cloub_card_info" dataNode="bss_dn$1-2" />
+		<table name="inf_dep_data_map" dataNode="bss_dn$1-2" />
+		<table name="inf_dep_ivpn_msg_log" dataNode="bss_dn$1-2" />
+		<table name="inf_dep_mb_order" dataNode="bss_dn$1-2" />
+		<table name="inf_dep_msg_info" dataNode="bss_dn$1-2" />
+		<table name="inf_dep_msg_log" dataNode="bss_dn$1-2" />
+		<table name="inf_dep_new_mdn" dataNode="bss_dn$1-2" />
+		<table name="inf_dep_order_complete_log" dataNode="bss_dn$1-2" />
+		<table name="inf_dep_regist_info_key" dataNode="bss_dn$1-2" />
+		<table name="inf_dep_regist_info_mdn" dataNode="bss_dn$1-2" />
+		<table name="inf_dep_service_config" dataNode="bss_dn$1-2" />
+		<table name="inf_dep_term_down" dataNode="bss_dn$1-2" />
+		<table name="inf_dep_term_key_info" dataNode="bss_dn$1-2" />
+		<table name="inf_dep_term_spec_info" dataNode="bss_dn$1-2" />
+		<table name="inf_dep_term_upload" dataNode="bss_dn$1-2" />
+		<table name="inf_dep_wap_error_log" dataNode="bss_dn$1-2" />
+		<table name="inf_dep_wap_inst_state" dataNode="bss_dn$1-2" />
+		<table name="inf_detail" dataNode="bss_dn$1-2" />
+		<table name="inf_dragon_terimal_audit" dataNode="bss_dn$1-2" />
+		<table name="inf_dragon_terimal_dep_log" dataNode="bss_dn$1-2" />
+		<table name="inf_external_acct_info" dataNode="bss_dn$1-2" />
+		<table name="inf_external_cust_info" dataNode="bss_dn$1-2" />
+		<table name="inf_external_vpnmeminfo" dataNode="bss_dn$1-2" />
+		<table name="inf_ext_custorder_img_log" dataNode="bss_dn$1-2" />
+		<table name="inf_field" dataNode="bss_dn$1-2" />
+		<table name="inf_field2" dataNode="bss_dn$1-2" />
+		<table name="inf_file_ftp" dataNode="bss_dn$1-2" />
+		<table name="inf_file_name_conf" dataNode="bss_dn$1-2" />
+		<table name="inf_file_stmt_conf" dataNode="bss_dn$1-2" />
+		<table name="inf_file_task_conf" dataNode="bss_dn$1-2" />
+		<table name="inf_finish_filter" dataNode="bss_dn$1-2" />
+		<table name="inf_finish_flow" dataNode="bss_dn$1-2" />
+		<table name="inf_finish_tache" dataNode="bss_dn$1-2" />
+		<table name="inf_ftpload_log" dataNode="bss_dn$1-2" />
+		<table name="inf_ftp_config" dataNode="bss_dn$1-2" />
+		<table name="inf_group_service_offer_interc" dataNode="bss_dn$1-2" />
+		<table name="inf_gsecs_offer_inst" dataNode="bss_dn$1-2" />
+		<table name="inf_gsecs_prod_inst" dataNode="bss_dn$1-2" />
+		<table name="inf_gs_offer_confg" dataNode="bss_dn$1-2" />
+		<table name="inf_hwbz_bill_acct_info" dataNode="bss_dn$1-2" />
+		<table name="inf_init_credit_acct" dataNode="bss_dn$1-2" />
+		<table name="inf_involved_number" dataNode="bss_dn$1-2" />
+		<table name="inf_iom_attr_extent_config" dataNode="bss_dn$1-2" />
+		<table name="inf_iom_back_config" dataNode="bss_dn$1-2" />
+		<table name="inf_iom_document_attr_config" dataNode="bss_dn$1-2" />
+		<table name="inf_iom_log" dataNode="bss_dn$1-2" />
+		<table name="inf_iom_mlog" dataNode="bss_dn$1-2" />
+		<table name="inf_iom_order_attr_config" dataNode="bss_dn$1-2" />
+		<table name="inf_iom_product_attr_config" dataNode="bss_dn$1-2" />
+		<table name="inf_ipss_acct" dataNode="bss_dn$1-2" />
+		<table name="inf_ipss_cust" dataNode="bss_dn$1-2" />
+		<table name="inf_ipss_file_config" dataNode="bss_dn$1-2" />
+		<table name="inf_ipss_inter_charge" dataNode="bss_dn$1-2" />
+		<table name="inf_ipss_mid_order_item" dataNode="bss_dn$1-2" />
+		<table name="inf_ipss_offer_instance" dataNode="bss_dn$1-2" />
+		<table name="inf_ipss_offer_object" dataNode="bss_dn$1-2" />
+		<table name="inf_ipss_offer_res_inst_rel" dataNode="bss_dn$1-2" />
+		<table name="inf_ipss_order_item" dataNode="bss_dn$1-2" />
+		<table name="inf_ipss_prod_inst_state" dataNode="bss_dn$1-2" />
+		<table name="inf_ipss_serv_acct" dataNode="bss_dn$1-2" />
+		<table name="inf_ipss_serv_attr" dataNode="bss_dn$1-2" />
+		<table name="inf_ipss_serv_history" dataNode="bss_dn$1-2" />
+		<table name="inf_ipss_serv_product" dataNode="bss_dn$1-2" />
+		<table name="inf_ipss_serv_product_attr" dataNode="bss_dn$1-2" />
+		<table name="inf_json" dataNode="bss_dn$1-2" />
+		<table name="inf_json2" dataNode="bss_dn$1-2" />
+		<table name="inf_lacara_info" dataNode="bss_dn$1-2" />
+		<table name="inf_lacara_info_log" dataNode="bss_dn$1-2" />
+		<table name="inf_log" dataNode="bss_dn$1-2" />
+		<table name="inf_lte_access_prod_inst" dataNode="bss_dn$1-2" />
+		<table name="inf_lte_prod_offer_inst" dataNode="bss_dn$1-2" />
+		<table name="inf_mkt_res_deal" dataNode="bss_dn$1-2" />
+		<table name="inf_msg_log" dataNode="bss_dn$1-2" />
+		<table name="inf_mxxt_datasyn" dataNode="bss_dn$1-2" />
+		<table name="inf_nacert_opertion_queue" dataNode="bss_dn$1-2" />
+		<table name="inf_nc_out_b" dataNode="bss_dn$1-2" />
+		<table name="inf_nc_out_h" dataNode="bss_dn$1-2" />
+		<table name="inf_nfc_card_info" dataNode="bss_dn$1-2" />
+		<table name="inf_norealname_dstop" dataNode="bss_dn$1-2" />
+		<table name="inf_norealname_dstop_log" dataNode="bss_dn$1-2" />
+		<table name="inf_ods_sycn_log" dataNode="bss_dn$1-2" />
+		<table name="inf_offer_inst_change" dataNode="bss_dn$1-2" />
+		<table name="inf_operation" dataNode="bss_dn$1-2" />
+		<table name="inf_operation_arg" dataNode="bss_dn$1-2" />
+		<table name="inf_order_item_change" dataNode="bss_dn$1-2" />
+		<table name="inf_order_item_log" dataNode="bss_dn$1-2" />
+		<table name="inf_order_log" dataNode="bss_dn$1-2" />
+		<table name="inf_param_define" dataNode="bss_dn$1-2" />
+		<table name="inf_pf_rep" dataNode="bss_dn$1-2" />
+		<table name="inf_pointgift_syn" dataNode="bss_dn$1-2" />
+		<table name="inf_pointgift_syn_merger_log" dataNode="bss_dn$1-2" />
+		<table name="inf_prod_attr_ctrl" dataNode="bss_dn$1-2" />
+		<table name="inf_prod_attr_return" dataNode="bss_dn$1-2" />
+		<table name="inf_prod_inst_rel" dataNode="bss_dn$1-2" />
+		<table name="inf_query_def" dataNode="bss_dn$1-2" />
+		<table name="inf_query_def_item_rel" dataNode="bss_dn$1-2" />
+		<table name="inf_query_def_rel" dataNode="bss_dn$1-2" />
+		<table name="inf_query_item" dataNode="bss_dn$1-2" />
+		<table name="inf_query_resut_mapper" dataNode="bss_dn$1-2" />
+		<table name="inf_raf_captcha_code" dataNode="bss_dn$1-2" />
+		<table name="inf_raf_oog_data_log" dataNode="bss_dn$1-2" />
+		<table name="inf_rela_table_info" dataNode="bss_dn$1-2" />
+		<table name="inf_send_redpacket" dataNode="bss_dn$1-2" />
+		<table name="inf_service_api" dataNode="bss_dn$1-2" />
+		<table name="inf_service_arg" dataNode="bss_dn$1-2" />
+		<table name="inf_service_offer_not_send" dataNode="bss_dn$1-2" />
+		<table name="inf_service_scope" dataNode="bss_dn$1-2" />
+		<table name="inf_serv_state_adsl" dataNode="bss_dn$1-2" />
+		<table name="inf_serv_state_adsl_err" dataNode="bss_dn$1-2" />
+		<table name="inf_serv_state_cdma" dataNode="bss_dn$1-2" />
+		<table name="inf_serv_state_cdma_err" dataNode="bss_dn$1-2" />
+		<table name="inf_serv_state_pstn" dataNode="bss_dn$1-2" />
+		<table name="inf_serv_state_pstn_err" dataNode="bss_dn$1-2" />
+		<table name="inf_short_msg_queue" dataNode="bss_dn$1-2" />
+		<table name="inf_spec_credit_acct" dataNode="bss_dn$1-2" />
+		<table name="inf_starlevel_fromods" dataNode="bss_dn$1-2" />
+		<table name="inf_supplier" dataNode="bss_dn$1-2" />
+		<table name="inf_supplier_accounts_type" dataNode="bss_dn$1-2" />
+		<table name="inf_task_def" dataNode="bss_dn$1-2" />
+		<table name="inf_task_def_backup" dataNode="bss_dn$1-2" />
+		<table name="inf_task_handle" dataNode="bss_dn$1-2" />
+		<table name="inf_task_handle_backup" dataNode="bss_dn$1-2" />
+		<table name="inf_task_handle_rela" dataNode="bss_dn$1-2" />
+		<table name="inf_task_handle_rela_backup" dataNode="bss_dn$1-2" />
+		<table name="inf_task_info" dataNode="bss_dn$1-2" />
+		<table name="inf_task_msg_config" dataNode="bss_dn$1-2" />
+		<table name="inf_task_process_flow" dataNode="bss_dn$1-2" />
+		<table name="inf_tax_sale_company_cfg" dataNode="bss_dn$1-2" />
+		<table name="inf_temp_credit_serv" dataNode="bss_dn$1-2" />
+		<table name="inf_uam_sendperpare_info" dataNode="bss_dn$1-2" />
+		<table name="inf_udb_sendperpare_info" dataNode="bss_dn$1-2" />
+		<table name="inf_udb_send_err_info" dataNode="bss_dn$1-2" />
+		<table name="inf_uvc_ftpupload_log" dataNode="bss_dn$1-2" />
+		<table name="inf_uvc_serv" dataNode="bss_dn$1-2" />
+		<table name="inf_uvc_upload" dataNode="bss_dn$1-2" />
+		<table name="inf_watch_app_conf" dataNode="bss_dn$1-2" />
+		<table name="inf_wq_ecp_group_queue" dataNode="bss_dn$1-2" />
+		<table name="inf_wq_ivpn_group_queue" dataNode="bss_dn$1-2" />
+		<table name="inf_ws_clear_log" dataNode="bss_dn$1-2" />
+		<table name="inf_ws_exchange_auth" dataNode="bss_dn$1-2" />
+		<table name="inf_ws_exchange_client" dataNode="bss_dn$1-2" />
+		<table name="inf_ws_exchange_client_ext" dataNode="bss_dn$1-2" />
+		<table name="inf_ws_exchange_log" dataNode="bss_dn$1-2" />
+		<table name="inf_ws_exchange_log_col" dataNode="bss_dn$1-2" />
+		<table name="inf_ws_exchange_provide" dataNode="bss_dn$1-2" />
+		<table name="inf_ws_exchange_synbiz_path" dataNode="bss_dn$1-2" />
+		<table name="inf_ws_exchange_syninfo" dataNode="bss_dn$1-2" />
+		<table name="intf_iom_serv_off_revocation" dataNode="bss_dn$1-2" />
+		<table name="invoice_cepex_middle" dataNode="bss_dn$1-2" />
+		<table name="invoice_detail" dataNode="bss_dn$1-2" />
+		<table name="jk_bill_serv_offer_trans" dataNode="bss_dn$1-2" />
+		<table name="job_execution_log" dataNode="bss_dn$1-2" />
+		<table name="job_operation_log" dataNode="bss_dn$1-2" />
+		<table name="job_status_trace_log" dataNode="bss_dn$1-2" />
+		<table name="jt_order_rel" dataNode="bss_dn$1-2" />
+		<table name="l_cepex_services_xml" dataNode="bss_dn$1-2" />
+		<table name="l_cepex_soo_order_ext" dataNode="bss_dn$1-2" />
+		<table name="l_csb_soo_log" dataNode="bss_dn$1-2" />
+		<table name="l_inf_mkt_res_deal" dataNode="bss_dn$1-2" />
+		<table name="l_service_billing_remove" dataNode="bss_dn$1-2" />
+		<table name="mb_info_config" dataNode="bss_dn$1-2" />
+		<table name="mid_api_imp" dataNode="bss_dn$1-2" />
+		<table name="mid_api_imp_56" dataNode="bss_dn$1-2" />
+		<table name="mid_api_imp_58" dataNode="bss_dn$1-2" />
+		<table name="mid_api_imp_59" dataNode="bss_dn$1-2" />
+		<table name="mid_api_imp_crm" dataNode="bss_dn$1-2" />
+		<table name="ods_busi_info" dataNode="bss_dn$1-2" />
+		<table name="ods_busi_info_log" dataNode="bss_dn$1-2" />
+		<table name="ods_exp_up_ods_sjd_nochg4g" dataNode="bss_dn$1-2" />
+		<table name="order_finish_trace" dataNode="bss_dn$1-2" />
+		<table name="query_items_desensitive" dataNode="bss_dn$1-2" />
+		<table name="q_cepex_services_xml" dataNode="bss_dn$1-2" />
+		<table name="rds_cache_pusher" dataNode="bss_dn$1-2" />
+		<table name="rm_five_region" dataNode="bss_dn$1-2" />
+		<table name="rule_soo_check" dataNode="bss_dn$1-2" />
+		<table name="rule_soo_pre_check" dataNode="bss_dn$1-2" />
+		<table name="sales_resource_attr" dataNode="bss_dn$1-2" />
+		<table name="service_billing_remove" dataNode="bss_dn$1-2" />
+		<table name="service_billing_remove_err" dataNode="bss_dn$1-2" />
+		<table name="service_billing_remove_his" dataNode="bss_dn$1-2" />
+		<table name="service_billing_remove_islte" dataNode="bss_dn$1-2" />
+		<table name="serv_remove_billing_lihui" dataNode="bss_dn$1-2" />
+		<table name="serv_remove_billing_lihui_sc" dataNode="bss_dn$1-2" />
+		<table name="temp_compare" dataNode="bss_dn$1-2" />
+		<table name="temp_qry_inf" dataNode="bss_dn$1-2" />
+		<table name="temp_sort" dataNode="bss_dn$1-2" />
+		<table name="yzf_inst_deposit_result" dataNode="bss_dn$1-2" />
+				
+	</schema>
+	<!-- 受理中心 -->
+	<!-- bss 3.0 受理中心分片测试配置   127.0.0.1:8066:BSS3ORDERDB -->
+	<!-- <schema name="BSS3ORDERDB" checkSQLschema="false"> -->
+	<schema name="BSS3ORDERDB" checkSQLschema="false" sqlMaxLimit="100000">
+		
+		<!-- 系统全局表 -->	
+		<table name="user_tables" type="global" dataNode="bss_order$1-2" />
+		<table name="user_sequences" type="global" dataNode="bss_order$1-2" />
+		<table name="dual" type="global" dataNode="bss_order$1-2" />
+		
+		<!-- 订单业务全局表 -->
+		<table name="attr_spec" type="global" dataNode="bss_order$1-2" />
+		<table name="attr_spec_tree" type="global" dataNode="bss_order$1-2" />
+		<table name="attr_value" type="global" dataNode="bss_order$1-2" />
+		<table name="attribute_value_rela" type="global" dataNode="bss_order$1-2" />
+		<table name="club" type="global" dataNode="bss_order$1-2" />
+		<table name="club_mbr_lev_service_rel" type="global" dataNode="bss_order$1-2" />
+		<table name="club_member_action" type="global" dataNode="bss_order$1-2" />
+		<table name="club_member_service" type="global" dataNode="bss_order$1-2" />
+		<table name="contacts_info" type="global" dataNode="bss_order$1-2" />
+		<table name="contacts_info_attr" type="global" dataNode="bss_order$1-2" />
+		<table name="contacts_info_his" type="global" dataNode="bss_order$1-2" />
+		<table name="dc_public" type="global" dataNode="bss_order$1-2" />
+		<table name="dc_sql"  type="global" dataNode="bss_order$1-2" />
+		<table name="dc_sql_service" type="global" dataNode="bss_order$1-2" />
+		<table name="dc_system_param"  type="global" dataNode="bss_order$1-2" />
+		<table name="flow_type"  type="global" dataNode="bss_order$1-2" /><!-- 订单调度流程类型 -->
+		<table name="industry_name_key"  type="global" dataNode="bss_order$1-2" />
+		<table name="industry_type"  type="global" dataNode="bss_order$1-2" />
+		<table name="industry_type_key_word"  type="global" dataNode="bss_order$1-2" />
+		<table name="job_run_cursor" dataNode="bss_order$1-2" />
+		<table name="job_task" dataNode="bss_order$1-2" />
+		<table name="organization" type="global"  dataNode="bss_order$1-2" />
+		<!-- <table name="party" type="global"  dataNode="bss_order$1-2" />
+		<table name="party_attr" type="global"  dataNode="bss_order$1-2" />
+		<table name="party_cert" type="global"  dataNode="bss_order$1-2" />
+		<table name="party_cert_his" type="global"  dataNode="bss_order$1-2" />
+		<table name="party_check_log" type="global"  dataNode="bss_order$1-2" />
+		<table name="party_his" type="global"  dataNode="bss_order$1-2" />
+		<table name="party_ind" type="global"  dataNode="bss_order$1-2" />
+		<table name="party_ind_his" type="global" dataNode="bss_order$1-2" />
+		<table name="party_org" type="global"  dataNode="bss_order$1-2" />
+		<table name="party_org_his" type="global"  dataNode="bss_order$1-2" />
+		<table name="party_rel" type="global"  dataNode="bss_order$1-2" />
+		<table name="party_role" type="global"  dataNode="bss_order$1-2" /> -->
+		<table name="query_wizard" type="global" dataNode="bss_order$1-2" />
+		<table name="query_wizard_condition" type="global" dataNode="bss_order$1-2" />
+		<table name="query_wizard_config" type="global" dataNode="bss_order$1-2" />
+		<table name="query_wizard_favorites" type="global" dataNode="bss_order$1-2" />
+		<table name="query_wizard_rela" type="global" dataNode="bss_order$1-2" />
+		<table name="query_wizard_tip" type="global" dataNode="bss_order$1-2" />
+		<table name="query_condition_permission" type="global" dataNode="bss_order$1-2" />
+		<table name="query_config" type="global" dataNode="bss_order$1-2" />
+		<table name="query_config_cat" type="global" dataNode="bss_order$1-2" />
+		<table name="query_config_rela" type="global" dataNode="bss_order$1-2" />
+		<table name="query_content" type="global" dataNode="bss_order$1-2" />
+		<table name="query_item" type="global" dataNode="bss_order$1-2" />
+		<table name="query_item_action" type="global" dataNode="bss_order$1-2" />
+		<table name="query_item_content" type="global" dataNode="bss_order$1-2" />
+		<table name="query_item_detail" type="global" dataNode="bss_order$1-2" />
+		<table name="query_item_ext" type="global" dataNode="bss_order$1-2" />
+		<table name="query_item_rela" type="global" dataNode="bss_order$1-2" />
+		<table name="query_param_config" type="global" dataNode="bss_order$1-2" />
+		<table name="query_permission" type="global" dataNode="bss_order$1-2" />
+		<table name="query_style" type="global" dataNode="bss_order$1-2" />
+		<table name="query_tip" type="global" dataNode="bss_order$1-2" />
+		<table name="query_tip_config" type="global" dataNode="bss_order$1-2" />
+		<table name="query_tip_rela" type="global" dataNode="bss_order$1-2" />
+		<table name="query_type" type="global" dataNode="bss_order$1-2" /><!-- 受理中心om_dev -->
+		<table name="query_type_attr" type="global" dataNode="bss_order$1-2" /><!-- 受理中心om_dev -->
+		<table name="query_variable" type="global" dataNode="bss_order$1-2" />
+		<table name="query_var_rela" type="global" dataNode="bss_order$1-2" />
+		<!-- <table name="search_engine_dict" type="global" dataNode="bss_order$1-2" /> -->
+		<table name="seq_manage" type="global"  dataNode="bss_order$1-2" />
+		<table name="sequence_management" type="global"  dataNode="bss_order$1-2" />
+		<table name="staff" type="global"  dataNode="bss_order$1-2" />
+		<table name="sys_table_dict" type="global" dataNode="bss_order$1-2" /><!-- 受理中心ord_dev -->
+		<table name="system_user" type="global"  dataNode="bss_order$1-2" />
+		<table name="system_user_post" type="global"  dataNode="bss_order$1-2" />
+		<table name="tache_type" type="global" dataNode="bss_order$1-2" />
+		<table name="tache_type_relation" type="global" dataNode="bss_order$1-2" />
+		<table name="tfm_action_args" type="global" dataNode="bss_order$1-2" />
+		<table name="tfm_action_list" type="global" dataNode="bss_order$1-2" />
+		<table name="tfm_error_log" type="global" dataNode="bss_order$1-2" />
+		<table name="tfm_services" type="global" dataNode="bss_order$1-2" />
+		<table name="tfm_service_args" type="global" dataNode="bss_order$1-2" />
+		<table name="tfm_serv_args" type="global" dataNode="bss_order$1-2" />
+		<table name="tfm_serv_class_def" type="global" dataNode="bss_order$1-2" />
+		<table name="tfm_serv_ext" type="global" dataNode="bss_order$1-2" />
+		<table name="tfm_serv_relation" type="global" dataNode="bss_order$1-2" />
+		<!-- 奇葩的全局表 -->
+		<table name="org_yingshang" type="global" dataNode="bss_order$1-2" /> <!-- 新增客户，校验证件类型 -->
+		<!-- jk_dev全局表 -->
+		<table name="csb_config" type="global" dataNode="bss_order$1-2" />
+		<table name="csb_customer_order" type="global" dataNode="bss_order$1-2" />
+		<table name="csb_customer_order_attr" type="global" dataNode="bss_order$1-2" />
+		<table name="csb_cust_guibing" type="global" dataNode="bss_order$1-2" />
+		<table name="csb_dkx_order_connect" type="global" dataNode="bss_order$1-2" />
+		<table name="csb_general_code_map" type="global" dataNode="bss_order$1-2" />
+		<table name="csb_info" type="global" dataNode="bss_order$1-2" />
+		<table name="csb_order_exception" type="global" dataNode="bss_order$1-2" />
+		<table name="csb_order_item_group" type="global" dataNode="bss_order$1-2" />
+		<table name="csb_order_item_group_attr" type="global" dataNode="bss_order$1-2" />
+		<table name="csb_order_xml_resolve" type="global" dataNode="bss_order$1-2" />
+		<table name="csb_query_ext" type="global" dataNode="bss_order$1-2" />
+		<table name="csb_rule_event" type="global" dataNode="bss_order$1-2" />
+		<table name="csb_sequence_conf" type="global" dataNode="bss_order$1-2" />
+		<table name="csb_service_conf" type="global" dataNode="bss_order$1-2" />
+		<table name="csb_service_info" type="global" dataNode="bss_order$1-2" />
+		<table name="csb_soo_dkx_order" type="global"  dataNode="bss_order$1-2" />
+		<table name="csb_soo_finish" type="global" dataNode="bss_order$1-2" />
+		<table name="csb_soo_info" type="global" dataNode="bss_order$1-2" />
+		<table name="csb_soo_log" type="global" dataNode="bss_order$1-2" />
+		<table name="csb_soo_order_ext" type="global" dataNode="bss_order$1-2" />
+		<table name="csb_sort" type="global" dataNode="bss_order$1-2" />
+		<!-- rule_dev全局表 -->
+		<table name="express" type="global" dataNode="bss_order$1-2" />
+		<table name="express_condition" type="global" dataNode="bss_order$1-2" />
+		<table name="express_fact" type="global" dataNode="bss_order$1-2" />
+		<table name="express_fact_attr" type="global" dataNode="bss_order$1-2" />
+		<table name="express_template" type="global" dataNode="bss_order$1-2" />
+		<table name="express_template_param" type="global" dataNode="bss_order$1-2" />
+		<table name="offer_rstr_rul" type="global" dataNode="bss_order$1-2" />
+		<table name="rule_call_log" type="global" dataNode="bss_order$1-2" />
+		<table name="rule_property" type="global" dataNode="bss_order$1-2" />
+		<table name="serv_rstr_rul" type="global" dataNode="bss_order$1-2" />
+		<!-- cpc全局表 -->
+		<table name="offer_add_cfg" type="global" dataNode="bss_order$1-2" />
+		<table name="offer_comp_role" type="global" dataNode="bss_order$1-2" />
+		<table name="offer_pricing_relation" type="global" dataNode="bss_order$1-2" />
+		<table name="offer_prod_attr_rel" type="global" dataNode="bss_order$1-2" />
+		<table name="offer_prod_rel" type="global" dataNode="bss_order$1-2" />
+		<table name="offer_prod_rela" type="global" dataNode="bss_order$1-2" />
+		<table name="offer_prod_rel_role" type="global" dataNode="bss_order$1-2" />
+		<table name="offer_prod_rel_role_rel" type="global" dataNode="bss_order$1-2" />
+		<table name="offer_prod_service_rel" type="global" dataNode="bss_order$1-2" />
+		<table name="offer_relation_def" type="global" dataNode="bss_order$1-2" />
+		<table name="offer_relation_restricted" type="global" dataNode="bss_order$1-2" />
+		<table name="offer_service_rel" type="global" dataNode="bss_order$1-2" />
+		<table name="offer_terminal_scale" type="global" dataNode="bss_order$1-2" />
+		<table name="offer_warr_requement" type="global" dataNode="bss_order$1-2" />
+		<table name="product" type="global" dataNode="bss_order$1-2" />
+		<table name="product_adsc" type="global" dataNode="bss_order$1-2" />
+		<table name="product_attr" type="global" dataNode="bss_order$1-2" />
+		<table name="product_attr_number_rel" type="global" dataNode="bss_order$1-2" />
+		<table name="product_attr_region_config" type="global" dataNode="bss_order$1-2" />
+		<table name="product_catalog_item_bureau" type="global" dataNode="bss_order$1-2" />
+		<table name="product_catalog_item_element" type="global" dataNode="bss_order$1-2" />
+		<table name="product_catalog_item_role" type="global" dataNode="bss_order$1-2" />
+		<table name="product_conf_group" type="global" dataNode="bss_order$1-2" />
+		<table name="product_distributor" type="global" dataNode="bss_order$1-2" />
+		<table name="product_ent" type="global" dataNode="bss_order$1-2" />
+		<table name="product_ext_attr" type="global" dataNode="bss_order$1-2" />
+		<table name="product_family" type="global" dataNode="bss_order$1-2" />
+		<table name="product_feature" type="global" dataNode="bss_order$1-2" />
+		<table name="product_group_member" type="global" dataNode="bss_order$1-2" />
+		<table name="product_group_relation" type="global" dataNode="bss_order$1-2" />
+		<table name="product_group_type" type="global" dataNode="bss_order$1-2" />
+		<table name="product_number_req" type="global" dataNode="bss_order$1-2" />
+		<table name="product_offer_act" type="global" dataNode="bss_order$1-2" />
+		<table name="product_offer_cat" type="global" dataNode="bss_order$1-2" />
+		<table name="product_offer_credit" type="global" dataNode="bss_order$1-2" />
+		<table name="product_offer_detail_base" type="global" dataNode="bss_order$1-2" />
+		<table name="product_offer_feature" type="global" dataNode="bss_order$1-2" />
+		<table name="product_offer_group_relation" type="global" dataNode="bss_order$1-2" />
+		<table name="product_offer_hint" type="global" dataNode="bss_order$1-2" />
+		<table name="product_offer_map" type="global" dataNode="bss_order$1-2" />
+		<table name="product_offer_priority" type="global" dataNode="bss_order$1-2" />
+		<table name="product_offer_relation_group" type="global" dataNode="bss_order$1-2" />
+		<table name="product_offer_service" type="global" dataNode="bss_order$1-2" />
+		<table name="product_offer_service_inherit" type="global" dataNode="bss_order$1-2" />
+		<table name="product_provider" type="global" dataNode="bss_order$1-2" />
+		<table name="product_region" type="global" dataNode="bss_order$1-2" />
+		<table name="product_relation" type="global" dataNode="bss_order$1-2" />
+		<table name="product_relation_adsc" type="global" dataNode="bss_order$1-2" />
+		<table name="product_relation_attr" type="global" dataNode="bss_order$1-2" />
+		<table name="product_relation_feature" type="global" dataNode="bss_order$1-2" />
+		<table name="product_relation_group" type="global" dataNode="bss_order$1-2" />
+		<table name="product_relation_role" type="global" dataNode="bss_order$1-2" />
+		<table name="product_relation_type" type="global" dataNode="bss_order$1-2" />
+		<table name="product_state_ref" type="global" dataNode="bss_order$1-2" />
+		<table name="prod_attr_rela" type="global" dataNode="bss_order$1-2" />
+		<table name="prod_attr_value" type="global" dataNode="bss_order$1-2" />
+		<table name="prod_catalog_location" type="global" dataNode="bss_order$1-2" />
+		<table name="prod_char_value_restrict" type="global" dataNode="bss_order$1-2" />
+		<table name="prod_comp_detail" type="global" dataNode="bss_order$1-2" />
+		<table name="prod_comp_detail_role" type="global" dataNode="bss_order$1-2" />
+		<table name="prod_mkt_res_rel" type="global" dataNode="bss_order$1-2" />
+		<table name="prod_mkt_res_rela" type="global" dataNode="bss_order$1-2" />
+		<table name="prod_offer" type="global" dataNode="bss_order$1-2" />
+		<table name="prod_offer_assure_demand" type="global" dataNode="bss_order$1-2" />
+		<table name="prod_offer_attr" type="global" dataNode="bss_order$1-2" />
+		<table name="prod_offer_attr_comments" type="global" dataNode="bss_order$1-2" />
+		<table name="prod_offer_attr_rela" type="global" dataNode="bss_order$1-2" />
+		<table name="prod_offer_attr_value" type="global" dataNode="bss_order$1-2" />
+		<table name="prod_offer_channel" type="global" dataNode="bss_order$1-2" />
+		<table name="prod_offer_cust_group" type="global" dataNode="bss_order$1-2" />
+		<table name="prod_offer_distributor" type="global" dataNode="bss_order$1-2" />
+		<table name="prod_offer_nbr_seg" type="global" dataNode="bss_order$1-2" />
+		<table name="prod_offer_nolevel_rule" type="global" dataNode="bss_order$1-2" />
+		<table name="prod_offer_nolevel_rule_1105" type="global" dataNode="bss_order$1-2" />
+		<table name="prod_offer_para" type="global" dataNode="bss_order$1-2" />
+		<table name="prod_offer_para_rela" type="global" dataNode="bss_order$1-2" />
+		<table name="prod_offer_period" type="global" dataNode="bss_order$1-2" />
+		<table name="prod_offer_privilege" type="global" dataNode="bss_order$1-2" />
+		<table name="prod_offer_region" type="global" dataNode="bss_order$1-2" />
+		<table name="prod_offer_rel" type="global" dataNode="bss_order$1-2" />
+		<table name="prod_offer_rel_role" type="global" dataNode="bss_order$1-2" />
+		<table name="prod_offer_res_rel" type="global" dataNode="bss_order$1-2" />
+		<table name="prod_offer_res_rela" type="global" dataNode="bss_order$1-2" />
+		<table name="prod_offer_sale_role" type="global" dataNode="bss_order$1-2" />
+		<table name="prod_offer_time" type="global" dataNode="bss_order$1-2" />
+		<table name="prod_service_offer" type="global" dataNode="bss_order$1-2" />
+		
+		<!-- 订单表分片策略 -->
+		<table name="customer_order" dataNode="bss_order$1-2" rule="customer_rule" primaryKey="cust_order_id">
+			<!-- 客户订单属性 -->
+			<childTable name="order_attr" primaryKey="order_attr_id" joinKey="cust_id" parentKey="cust_order_id"/>
+			<!-- 订单资源实例关系 -->
+			<childTable name="customer_order_res" primaryKey="customer_order_res_id" joinKey="cust_id" parentKey="cust_order_id"/>
+			<!-- 订单参与人 -->
+			<childTable name="order_party" primaryKey="order_party_id" joinKey="cust_id" parentKey="order_id"/>
+			<!-- 订单经办人 -->
+			<childTable name="order_handler" primaryKey="order_handler_id" joinKey="cust_id" parentKey="cust_order_id"/>
+			<!-- 客户订单联系人信息 -->
+			<childTable name="order_contact_info" primaryKey="order_contact_info_id" joinKey="cust_id" parentKey="cust_order_id"/>
+			<!-- 订单项预存信息 -->
+			<childTable name="order_deposit" primaryKey="order_deposit_id" joinKey="cust_id" parentKey="cust_order_id"/>
+		</table>
+		
+		<!-- 订单项 -->
+		<table name="order_item"  dataNode="bss_order$1-2" rule="belong_customer_rule" primaryKey="order_item_id" />
+		<!-- 订单项属性 -->
+		<table name="order_item_attr" dataNode="bss_order$1-2" rule="customer_rule" primaryKey="order_item_attr_id" />
+		<!-- 订单项变更信息 -->
+		<table name="order_item_change" dataNode="bss_order$1-2" rule="customer_rule" primaryKey="chg_id" />
+		<!-- 订单项关系 -->
+		<table name="order_item_rel" dataNode="bss_order$1-2" rule="customer_rule"/>
+			
+		<!-- 订单归档表分片策略 -->
+		<table name="customer_order_his" dataNode="bss_order$1-2" rule="customer_rule" primaryKey="cust_order_id">
+			<!-- 客户订单属性 -->
+			<childTable name="order_attr_his" primaryKey="order_attr_id" joinKey="cust_id" parentKey="cust_order_id"/>
+			<!-- 订单经办人 -->
+			<childTable name="order_handler_his" primaryKey="order_handler_id" joinKey="cust_id" parentKey="cust_order_id"/>
+			<!-- 客户订单联系人信息 -->
+			<childTable name="order_contact_info_his" primaryKey="order_contact_info_id" joinKey="cust_id" parentKey="cust_order_id"/>
+			<!-- 订单项预存信息 -->
+			<childTable name="order_deposit_his" primaryKey="order_deposit_id" joinKey="cust_id" parentKey="cust_order_id"/>
+		</table>
+		
+		<!-- 订单项 -->
+		<table name="order_item_his"  dataNode="bss_order$1-2" rule="belong_customer_rule" primaryKey="order_item_id" />
+		<!-- 订单项属性 -->
+		<table name="order_item_attr_his" dataNode="bss_order$1-2" rule="customer_rule" primaryKey="order_item_attr_id" />
+		<!-- 订单项变更信息 -->
+		<table name="order_item_change_his" dataNode="bss_order$1-2" rule="customer_rule" primaryKey="chg_id" />
+		<!-- 订单项关系 -->
+		<table name="order_item_rel_his" dataNode="bss_order$1-2" rule="customer_rule"/>
+		
+		<!-- 发展人信息 -->
+		<table name="dev_staff_info" dataNode="bss_order$1-2" rule="customer_rule" primaryKey="dev_staff_info_id"/>
+		<table name="dev_staff_info_his" dataNode="bss_order$1-2" rule="customer_rule" primaryKey="dev_staff_info_id"/>
+		
+		<!-- 订单调度流程 -->
+		<table name="flow" dataNode="bss_order$1-2" rule="customer_rule" primaryKey="tache_id"/>
+		
+		<!-- 施工队列 -->
+		<table name="wq_construct" dataNode="bss_order$1-2" rule="customer_rule" primaryKey="tache_id"/>
+		
+		<!-- 竣工队列 -->
+		<table name="wq_finish" dataNode="bss_order$1-2" rule="customer_rule" primaryKey="tache_id"/>
+		
+		<!-- 受理队列(营业工单) -->
+		<table name="wq_accept" dataNode="bss_order$1-2" rule="customer_rule" primaryKey="work_order_id"/>
+
+		<table name="wq_syn_cust" dataNode="bss_order$1-2" rule="customer_rule" primaryKey="queue_id"/>
+		
+		<!-- 销售品实例表分片策略 -->
+		<table name="offer_inst" dataNode="bss_order$1-2" rule="prod_offer_inst_rule" primaryKey="offer_inst_id">
+			<!-- 销售品实例属性 -->
+			<childTable name="offer_inst_attr" primaryKey="offer_inst_attr_id" joinKey="owner_cust_id" parentKey="offer_inst_id"/>
+			<!-- 销售品构成对象实例关系 -->
+			<childTable name="offer_obj_inst_rel"  primaryKey="offer_obj_inst_rel_id" joinKey="owner_cust_id" parentKey="offer_inst_id"/>
+			<!-- 销售品资源实例关系 -->
+			<childTable name="offer_res_inst_rel"  primaryKey="offer_obj_inst_rel_id" joinKey="owner_cust_id" parentKey="offer_inst_id"/>
+			<childTable name="offer_res_inst_rel_ext"  primaryKey="offer_obj_inst_rel_id" joinKey="owner_cust_id" parentKey="offer_inst_id"/>
+			<!-- 销售品实例营销资源实例关系属性 -->
+			<childTable name="offer_res_inst_rela_attr"  primaryKey="offer_res_inst_rela_attr_id" joinKey="owner_cust_id" parentKey="offer_inst_id"/>
+			<!-- 销售品担保信息 -->
+			<childTable name="offer_inst_assure"  primaryKey="offer_inst_assure_id" joinKey="owner_cust_id" parentKey="offer_inst_id"/>
+			<childTable name="offer_inst_assure_ext"  primaryKey="offer_inst_assure_ext_id" joinKey="owner_cust_id" parentKey="offer_inst_id"/>
+			<!-- 销售品营销资源实例回收信息 -->
+			<childTable name="offer_res_inst_recy"  primaryKey="recy_id" joinKey="owner_cust_id" parentKey="offer_inst_id"/>
+			<!-- 销售品实例关系 -->
+			<!--  <childTable name="offer_inst_rel"  primaryKey="offer_res_inst_rela_attr_id" /> -->
+		</table>
+		
+		<!-- 销售品实例归档表分片策略 -->
+		<table name="offer_inst_his" dataNode="bss_order$1-2" rule="prod_offer_inst_rule" primaryKey="offer_inst_id">
+			<!-- 销售品实例属性 -->
+			<childTable name="offer_inst_attr_his" primaryKey="offer_inst_attr_id" joinKey="owner_cust_id" parentKey="offer_inst_id"/>
+			<!-- 销售品构成对象实例关系 -->
+			<childTable name="offer_obj_inst_rel_his"  primaryKey="offer_obj_inst_rel_id" joinKey="owner_cust_id" parentKey="offer_inst_id"/>
+			<!-- 销售品资源实例关系 -->
+			<childTable name="offer_res_inst_rel_his"  primaryKey="offer_obj_inst_rel_id" joinKey="owner_cust_id" parentKey="offer_inst_id"/>
+			<childTable name="offer_res_inst_rel_ext_his"  primaryKey="offer_obj_inst_rel_id" joinKey="owner_cust_id" parentKey="offer_inst_id"/>
+			<!-- 销售品担保信息 -->
+			<childTable name="offer_inst_assure_his"  primaryKey="offer_inst_assure_id" joinKey="owner_cust_id" parentKey="offer_inst_id"/>
+			<childTable name="offer_inst_assure_ext_his"  primaryKey="offer_inst_assure_ext_id" joinKey="owner_cust_id" parentKey="offer_inst_id"/>
+			<!-- 销售品实例关系 -->
+			<!--  <childTable name="offer_inst_rel_his"  primaryKey="offer_res_inst_rela_attr_id" /> -->
+		</table>
+		
+		<!-- 产品实例表分片策略 -->
+		<table name="prod_inst" dataNode="bss_order$1-2" rule="prod_offer_inst_rule" primaryKey="prod_inst_id">
+			<!-- 产品实例属性 -->
+			<childTable name="prod_inst_attr" primaryKey="prod_inst_attr_id" joinKey="owner_cust_id" parentKey="prod_inst_id"/>
+			<!-- 产品实例扩展属性 -->
+			<childTable name="prod_inst_ext" primaryKey="xm_inst_id" joinKey="owner_cust_id" parentKey="prod_inst_id"/>
+			<!-- 产品实例关系 -->
+			<childTable name="prod_inst_rel" primaryKey="prod_inst_rel_id" joinKey="owner_cust_id" parentKey="a_prod_inst_id"/>
+			<!-- 产品实例号码 -->
+			<childTable name="prod_inst_acc_nbr" primaryKey="serv_acc_nbr_id" joinKey="owner_cust_id" parentKey="prod_inst_id"/>
+			<!-- 产品实例号码 -->
+			<childTable name="prod_inst_acc_num" primaryKey="prod_inst_acc_num_id" joinKey="owner_cust_id" parentKey="prod_inst_id"/>
+			<!-- 产品实例帐务定制关系 -->
+			<childTable name="prod_inst_acct_rel" primaryKey="serv_acct_rel_id" joinKey="owner_cust_id" parentKey="prod_inst_id"/>
+			<!-- 产品实例停机记录 -->
+			<childTable name="prod_inst_state" primaryKey="prod_inst_state_id" joinKey="owner_cust_id" parentKey="prod_inst_id"/>
+			<!-- 功能产品实例 -->
+			<childTable name="prod_inst_func" primaryKey="prod_inst_id" joinKey="owner_cust_id" parentKey="prod_inst_id"/>
+			<childTable name="prod_inst_func_ext" primaryKey="prod_inst_func_ext_id" joinKey="owner_cust_id" parentKey="prod_inst_id"/>
+			<!-- 实例预约续包年预存金额 -->
+			<childTable name="prod_inst_prepay_amt" primaryKey="prod_inst_prepay_id" joinKey="owner_cust_id" parentKey="prod_inst_id"/> 
+			<!-- 产品营销资源实例关系 -->
+			<childTable name="prod_res_inst_rela" primaryKey="prod_res_inst_rela_id" joinKey="owner_cust_id" parentKey="prod_inst_id"/> 
+		</table>
+		
+		<!-- 产品实例归档表分片策略 -->
+		<table name="prod_inst_his" dataNode="bss_order$1-2" rule="prod_offer_inst_rule" primaryKey="prod_inst_id">
+			<!-- 产品实例属性 -->
+			<childTable name="prod_inst_attr_his" primaryKey="prod_inst_attr_id" joinKey="owner_cust_id" parentKey="prod_inst_id"/> 
+			<!-- 产品实例扩展属性 -->
+			<childTable name="prod_inst_ext_his" primaryKey="xm_inst_id" joinKey="owner_cust_id" parentKey="prod_inst_id"/>
+			<!-- 产品实例关系 -->
+			<childTable name="prod_inst_rel_his" primaryKey="prod_inst_rel_id" joinKey="owner_cust_id" parentKey="a_prod_inst_id"/>
+			<!-- 产品实例帐务定制关系 -->
+			<childTable name="prod_inst_acct_rel_his" primaryKey="serv_acct_rel_id" joinKey="owner_cust_id" parentKey="prod_inst_id"/>
+			<!-- 产品实例停机记录 -->
+			<childTable name="prod_inst_state_his" primaryKey="prod_inst_state_id" joinKey="owner_cust_id" parentKey="prod_inst_id"/>
+			<!-- 功能产品实例 -->
+			<childTable name="prod_inst_func_his" primaryKey="prod_inst_id" joinKey="owner_cust_id" parentKey="prod_inst_id"/>
+			<childTable name="prod_inst_func_ext_his" primaryKey="prod_inst_func_ext_id" joinKey="owner_cust_id" parentKey="prod_inst_id"/>
+			<!-- 实例预约续包年预存金额 -->
+			<childTable name="prod_inst_prepay_amt_his" primaryKey="prod_inst_prepay_id" joinKey="owner_cust_id" parentKey="prod_inst_id"/> 
+			<!-- 产品营销资源实例关系 -->
+			<childTable name="prod_res_inst_rela_his" primaryKey="prod_res_inst_rela_id" joinKey="owner_cust_id" parentKey="prod_inst_id"/> 
+		</table>
+		
+		<!-- 批量业务受理数据表分片策略 -->
+		<table name="batch_temp_data" dataNode="bss_order$1-2" rule="customer_rule" primaryKey="batch_data_id">
+			<!-- 批量业务受理数据明细 -->
+			<childTable name="batch_temp_data_detail" primaryKey="batch_data_detail_id" joinKey="cust_id" parentKey="batch_data_id"/>
+		</table>
+		
+		<!-- 批量业务受理数据历史表分片策略 -->
+		<table name="batch_temp_data_log" dataNode="bss_order$1-2" rule="customer_rule" primaryKey="batch_data_id">
+			<!-- 批量业务受理数据明细 -->
+			<childTable name="batch_temp_data_detail_log" primaryKey="batch_data_detail_id" joinKey="cust_id" parentKey="batch_data_id"/>
+		</table>
+		
+		<!-- ord_dev 尚未整理的表 -->
+		<table name="acct_item" dataNode="bss_order$1-2" />
+		<table name="acct_item_apve" dataNode="bss_order$1-2" />
+		<table name="acct_item_apve_his" dataNode="bss_order$1-2" />
+		<table name="acct_item_his" dataNode="bss_order$1-2" />
+		<table name="action" dataNode="bss_order$1-2" />
+		<table name="batch_prop_data" dataNode="bss_order$1-2" />
+		<table name="batch_templ" dataNode="bss_order$1-2" />
+		<table name="batch_temp_data_gt" dataNode="bss_order$1-2" />
+		<table name="bill" dataNode="bss_order$1-2" />
+		<table name="customer_order_einvoice" dataNode="bss_order$1-2" />
+		<table name="customer_order_image" dataNode="bss_order$1-2" />
+		<table name="customer_order_imageverify" dataNode="bss_order$1-2" />
+		<table name="customer_order_patch" dataNode="bss_order$1-2" />
+		<table name="customer_order_print" dataNode="bss_order$1-2" />
+		<table name="customer_order_trace" dataNode="bss_order$1-2" />
+		<table name="c_cfsf_accnbr" dataNode="bss_order$1-2" />
+		<table name="group_member_prop" dataNode="bss_order$1-2" />
+		<table name="his_acct_item" dataNode="bss_order$1-2" />
+		<table name="inf_service" dataNode="bss_order$1-2" />
+		<table name="invoice" dataNode="bss_order$1-2" />
+		<table name="invoice_print" dataNode="bss_order$1-2" />
+		<table name="jobl_ccg_cont_fee" dataNode="bss_order$1-2" />
+		<table name="job_offer_adsl_free_fee" dataNode="bss_order$1-2" />
+		<table name="job_offer_adsl_free_fee_log" dataNode="bss_order$1-2" />
+		<table name="l_customer_order" dataNode="bss_order$1-2" />
+		<table name="l_customer_order_image" dataNode="bss_order$1-2" />
+		<table name="l_customer_order_res" dataNode="bss_order$1-2" />
+		<table name="l_flow" dataNode="bss_order$1-2" />
+		<table name="l_order_deposit" dataNode="bss_order$1-2" />
+		<table name="l_order_item" dataNode="bss_order$1-2" />
+		<table name="l_order_item_attr" dataNode="bss_order$1-2" />
+		<table name="l_order_item_change" dataNode="bss_order$1-2" />
+		<table name="l_order_item_rel" dataNode="bss_order$1-2" />
+		<table name="l_order_party" dataNode="bss_order$1-2" />
+		<table name="no_paper_reprint" dataNode="bss_order$1-2" />
+		<table name="offer_collection" dataNode="bss_order$1-2" />
+		<table name="offer_flow_config" dataNode="bss_order$1-2" />
+		<table name="order_deposit_exception" dataNode="bss_order$1-2" />
+		<table name="order_item_change_cancel_log" dataNode="bss_order$1-2" />
+		<table name="order_item_log" dataNode="bss_order$1-2" />
+		<table name="ord_account" dataNode="bss_order$1-2" />
+		<table name="ord_contacts_info" dataNode="bss_order$1-2" />
+		<table name="ord_contacts_info_attr" dataNode="bss_order$1-2" />
+		<table name="ord_customer" dataNode="bss_order$1-2" />
+		<table name="ord_cust_attr" dataNode="bss_order$1-2" />
+		<table name="ord_cust_contact_info_rel" dataNode="bss_order$1-2" />
+		<table name="ord_ext_acct" dataNode="bss_order$1-2" />
+		<table name="ord_offer_inst" dataNode="bss_order$1-2" />
+		<table name="ord_offer_inst_assure" dataNode="bss_order$1-2" />
+		<table name="ord_offer_inst_attr" dataNode="bss_order$1-2" />
+		<table name="ord_offer_inst_rel" dataNode="bss_order$1-2" />
+		<table name="ord_offer_obj_inst_rel" dataNode="bss_order$1-2" />
+		<table name="ord_offer_prod_inst_rel" dataNode="bss_order$1-2" />
+		<table name="ord_offer_res_inst_rel" dataNode="bss_order$1-2" />
+		<table name="ord_party" dataNode="bss_order$1-2" />
+		<table name="ord_party_cert" dataNode="bss_order$1-2" />
+		<table name="ord_prod_inst" dataNode="bss_order$1-2" />
+		<table name="ord_prod_inst_attr" dataNode="bss_order$1-2" />
+		<table name="ord_prod_inst_rel" dataNode="bss_order$1-2" />
+		<table name="ord_prod_res_inst_rel" dataNode="bss_order$1-2" />
+		<table name="page_wizard" dataNode="bss_order$1-2" />
+		<table name="payment" dataNode="bss_order$1-2" />
+		<table name="preprocess_undo_config" dataNode="bss_order$1-2" />
+		<table name="prod_offer_fax_operate" dataNode="bss_order$1-2" />
+		<table name="sale_box_order" dataNode="bss_order$1-2" />
+		<table name="sale_box_staff" dataNode="bss_order$1-2" />
+		<table name="sect_item" dataNode="bss_order$1-2" />
+		<table name="sect_loader" dataNode="bss_order$1-2" />
+		<!-- <table name="service_control_scope" dataNode="bss_order$1-2" />
+		<table name="service_splict_scope" dataNode="bss_order$1-2" /> -->
+		<!-- <table name="table_ind_cust" dataNode="bss_order$1-2" /> -->
+		<table name="tache_type_staff" dataNode="bss_order$1-2" />
+		<table name="tax_rate_config" dataNode="bss_order$1-2" />
+		<table name="tmp_gfcx" dataNode="bss_order$1-2" />
+		<table name="tmp_gfhz" dataNode="bss_order$1-2" />
+		<table name="tmp_gfsj" dataNode="bss_order$1-2" />
+		<table name="tmp_gfzl" dataNode="bss_order$1-2" />
+		<table name="t_product_offer_relation" dataNode="bss_order$1-2" />
+		<table name="wl_accept" dataNode="bss_order$1-2" />
+		<table name="wl_construct" dataNode="bss_order$1-2" />
+		<table name="wl_finish" dataNode="bss_order$1-2" />
+		<table name="wq_finish_error" dataNode="bss_order$1-2" />
+		<table name="xdsl_season_card" dataNode="bss_order$1-2" />
+
+		<!-- om_dev 尚未整理的表 -->
+		<table name="acct_item_exception" dataNode="bss_order$1-2" />
+		<table name="acct_item_type_group" dataNode="bss_order$1-2" />
+		<table name="action_type" dataNode="bss_order$1-2" />
+		<table name="adslspeed_limit_log" dataNode="bss_order$1-2" />
+		<table name="adsl_speed" dataNode="bss_order$1-2" />
+		<table name="adsl_speed_update_log" dataNode="bss_order$1-2" />
+		<table name="agent_charge_config" dataNode="bss_order$1-2" />
+		<table name="agent_charge_log" dataNode="bss_order$1-2" />
+		<table name="agent_ypdk_log" dataNode="bss_order$1-2" />
+		<table name="agreement" dataNode="bss_order$1-2" />
+		<table name="agreement_authcode" dataNode="bss_order$1-2" />
+		<table name="agreement_company" dataNode="bss_order$1-2" />
+		<table name="agreement_delay" dataNode="bss_order$1-2" />
+		<table name="agreement_handover" dataNode="bss_order$1-2" />
+		<table name="agreement_his" dataNode="bss_order$1-2" />
+		<table name="agreement_life_cicle" dataNode="bss_order$1-2" />
+		<table name="agreement_log" dataNode="bss_order$1-2" />
+		<table name="agreement_log_type" dataNode="bss_order$1-2" />
+		<table name="agreement_log_type_rela" dataNode="bss_order$1-2" />
+		<table name="agreement_member" dataNode="bss_order$1-2" />
+		<table name="agreement_member_his" dataNode="bss_order$1-2" />
+		<table name="agreement_mss" dataNode="bss_order$1-2" />
+		<table name="agreement_mss_info" dataNode="bss_order$1-2" />
+		<table name="agreement_offer_rel" dataNode="bss_order$1-2" />
+		<table name="agreement_piopiety" dataNode="bss_order$1-2" />
+		<table name="agreement_piopiety_his" dataNode="bss_order$1-2" />
+		<table name="agreement_receipt_plan" dataNode="bss_order$1-2" />
+		<table name="agreement_receipt_print" dataNode="bss_order$1-2" />
+		<table name="agreement_template" dataNode="bss_order$1-2" />
+		<table name="agreement_template_item" dataNode="bss_order$1-2" />
+		<table name="agreement_template_item_his" dataNode="bss_order$1-2" />
+		<table name="agreement_template_region" dataNode="bss_order$1-2" />
+		<table name="agreement_template_sql" dataNode="bss_order$1-2" />
+		<table name="agreement_undertaker" dataNode="bss_order$1-2" />
+		<table name="agreement_undertaker_org" dataNode="bss_order$1-2" />
+		<table name="agreemnt_obj_attribute" dataNode="bss_order$1-2" />
+		<table name="agree_template_life_cicle" dataNode="bss_order$1-2" />
+		<table name="agt_adsl_report_data" dataNode="bss_order$1-2" />
+		<table name="agt_adsl_term" dataNode="bss_order$1-2" />
+		<table name="agt_attr_value_rela" dataNode="bss_order$1-2" />
+		<table name="agt_catalog" dataNode="bss_order$1-2" />
+		<table name="agt_catalog_item" dataNode="bss_order$1-2" />
+		<table name="agt_catalog_item_his" dataNode="bss_order$1-2" />
+		<table name="agt_int_attribute" dataNode="bss_order$1-2" />
+		<table name="agt_int_attribute_his" dataNode="bss_order$1-2" />
+		<table name="agt_item_attr_rel" dataNode="bss_order$1-2" />
+		<table name="agt_obj_attribute" dataNode="bss_order$1-2" />
+		<table name="agt_obj_attr_rela" dataNode="bss_order$1-2" />
+		<table name="agt_obj_relation" dataNode="bss_order$1-2" />
+		<table name="agt_restrict_instcode" dataNode="bss_order$1-2" />
+		<table name="agt_restrict_instcode_log" dataNode="bss_order$1-2" />
+		<table name="agt_templet_relation" dataNode="bss_order$1-2" />
+		<table name="agt_tem_item_attr" dataNode="bss_order$1-2" />
+		<table name="agt_tem_item_attr_rela" dataNode="bss_order$1-2" />
+		<table name="agt_tem_item_attr_type" dataNode="bss_order$1-2" />
+		<table name="agt_tem_item_sql" dataNode="bss_order$1-2" />
+		<table name="ag_sale_pack" dataNode="bss_order$1-2" />
+		<table name="ag_srv_pack" dataNode="bss_order$1-2" />
+		<table name="allocate_gt_log" dataNode="bss_order$1-2" />
+		<table name="allocate_log" dataNode="bss_order$1-2" />
+		<table name="al_preprocess" dataNode="bss_order$1-2" />
+		<table name="al_preprocess_detail" dataNode="bss_order$1-2" />
+		<table name="approve_acct_item_type" dataNode="bss_order$1-2" />
+		<table name="approve_app" dataNode="bss_order$1-2" />
+		<table name="approve_app_attr" dataNode="bss_order$1-2" />
+		<table name="approve_app_log" dataNode="bss_order$1-2" />
+		<table name="approve_app_to_itms_log" dataNode="bss_order$1-2" />
+		<table name="approve_content" dataNode="bss_order$1-2" />
+		<table name="approve_loop_type" dataNode="bss_order$1-2" />
+		<table name="approve_order_rela" dataNode="bss_order$1-2" />
+		<table name="app_content_fee_limit" dataNode="bss_order$1-2" />
+		<table name="app_work" dataNode="bss_order$1-2" />
+		<table name="app_work_log" dataNode="bss_order$1-2" />
+		<table name="arc_df_offer_gift_set" dataNode="bss_order$1-2" />
+		<table name="as_preprocess" dataNode="bss_order$1-2" />
+		<table name="as_preprocess_detail" dataNode="bss_order$1-2" />
+		<table name="as_preprocess_detail_prop" dataNode="bss_order$1-2" />
+		<table name="background_del_add_order" dataNode="bss_order$1-2" />
+		<table name="background_del_add_order_log" dataNode="bss_order$1-2" />
+		<table name="batch_approve_data" dataNode="bss_order$1-2" />
+		<table name="batch_approve_templ" dataNode="bss_order$1-2" />
+		<table name="batch_cust_mod" dataNode="bss_order$1-2" />
+		<table name="batch_offerbroadband_data" dataNode="bss_order$1-2" />
+		<table name="batch_speedbroadband_data" dataNode="bss_order$1-2" />
+		<table name="batch_speedbroadband_error" dataNode="bss_order$1-2" />
+		<table name="batch_withdraw_log" dataNode="bss_order$1-2" />
+		<table name="bictinputitem_offerrel" dataNode="bss_order$1-2" />
+		<table name="bictitem_offcycle" dataNode="bss_order$1-2" />
+		<table name="bictitem_oncycle" dataNode="bss_order$1-2" />
+		<table name="busi_accept_log" dataNode="bss_order$1-2" />
+		<table name="campus_data" dataNode="bss_order$1-2" />
+		<table name="cdmainst_deposit" dataNode="bss_order$1-2" />
+		<table name="cdma_backfill_log" dataNode="bss_order$1-2" />
+		<table name="centrex_group_no" dataNode="bss_order$1-2" />
+		<table name="cloudy_card_uninstall_log" dataNode="bss_order$1-2" />
+		<table name="common_error_data" dataNode="bss_order$1-2" />
+		<table name="content_loop" dataNode="bss_order$1-2" />
+		<table name="corp_area" dataNode="bss_order$1-2" />
+		<table name="corp_industry" dataNode="bss_order$1-2" />
+		<table name="crm_business_log" dataNode="bss_order$1-2" />
+		<table name="crm_clear_common_cache" dataNode="bss_order$1-2" />
+		<table name="crm_itms_order_item" dataNode="bss_order$1-2" />
+		<table name="crm_lucene_field" dataNode="bss_order$1-2" />
+		<table name="crm_lucene_sql" dataNode="bss_order$1-2" />
+		<table name="custrecept_action_rule" dataNode="bss_order$1-2" />
+		<table name="c_contract_info" dataNode="bss_order$1-2" />
+		<table name="c_contract_prod" dataNode="bss_order$1-2" />
+		<table name="c_ent_spec_line" dataNode="bss_order$1-2" />
+		<table name="c_staff_zwry" dataNode="bss_order$1-2" />
+		<table name="c_user_kd_add_mobile" dataNode="bss_order$1-2" />
+		<table name="c_user_list_itv_to4k" dataNode="bss_order$1-2" />
+		<table name="c_user_list_kdts50m" dataNode="bss_order$1-2" />
+		<table name="c_user_list_kdts8m" dataNode="bss_order$1-2" />
+		<table name="c_user_list_school" dataNode="bss_order$1-2" />
+		<table name="c_user_list_xlwx" dataNode="bss_order$1-2" />
+		<table name="dc_accept_data_priv" dataNode="bss_order$1-2" />
+		<table name="dc_agent_priv" dataNode="bss_order$1-2" />
+		<table name="dc_prepay_group" dataNode="bss_order$1-2" />
+		<table name="df_fee_item_type" dataNode="bss_order$1-2" />
+		<table name="dic_withdraw_reason" dataNode="bss_order$1-2" />
+		<table name="dyn_business_object" dataNode="bss_order$1-2" />
+		<table name="eb_prod_offer_inst" dataNode="bss_order$1-2" />
+		<table name="edw_hien_user_list" dataNode="bss_order$1-2" />
+		<table name="event_scheme" dataNode="bss_order$1-2" />
+		<table name="exception_orderitems_log" dataNode="bss_order$1-2" />
+		<!-- <table name="express" dataNode="bss_order$1-2" />
+		<table name="express_template" dataNode="bss_order$1-2" /> -->
+		<table name="fax_number" dataNode="bss_order$1-2" />
+		<table name="fax_number_range" dataNode="bss_order$1-2" />
+		<table name="four_hundred_business" dataNode="bss_order$1-2" />
+		<table name="group_member_info" dataNode="bss_order$1-2" />
+		<table name="hand_acct_item" dataNode="bss_order$1-2" />
+		<table name="ict_cost" dataNode="bss_order$1-2" />
+		<table name="ict_item" dataNode="bss_order$1-2" />
+		<table name="ict_profitcenter_map" dataNode="bss_order$1-2" />
+		<table name="ict_sub_item" dataNode="bss_order$1-2" />
+		<table name="ict_wbs" dataNode="bss_order$1-2" />
+		<table name="inf_captcha_code" dataNode="bss_order$1-2" />
+		<table name="inf_wq_finish" dataNode="bss_order$1-2" />
+		<table name="inf_yksh_info" dataNode="bss_order$1-2" />
+		<table name="job_ccg_cont_fee" dataNode="bss_order$1-2" />
+		<table name="j_netdisc_remove_inst_log" dataNode="bss_order$1-2" />
+		<table name="j_temp_del_job_log" dataNode="bss_order$1-2" />
+		<table name="j_temp_del_off_inst" dataNode="bss_order$1-2" />
+		<table name="j_temp_del_off_inst_log" dataNode="bss_order$1-2" />
+		<table name="key_business_check_log" dataNode="bss_order$1-2" />
+		<table name="key_business_cust" dataNode="bss_order$1-2" />
+		<table name="lte_reverse_update_log" dataNode="bss_order$1-2" />
+		<table name="l_acct_item_apve" dataNode="bss_order$1-2" />
+		<table name="l_agreement_member" dataNode="bss_order$1-2" />
+		<table name="l_cdmainst_deposit" dataNode="bss_order$1-2" />
+		<table name="l_ent_prod_inst" dataNode="bss_order$1-2" />
+		<table name="l_merger_cust_point" dataNode="bss_order$1-2" />
+		<table name="l_offer_service_chaiji_log" dataNode="bss_order$1-2" />
+		<table name="l_offer_service_stop_log" dataNode="bss_order$1-2" />
+		<table name="l_pay_mode_detail" dataNode="bss_order$1-2" />
+		<table name="l_prod_inst_acc_nbr" dataNode="bss_order$1-2" />
+		<table name="l_prod_offer_fee_info" dataNode="bss_order$1-2" />
+		<table name="l_prod_offer_inst_party" dataNode="bss_order$1-2" />
+		<table name="l_prod_offer_inst_party_log" dataNode="bss_order$1-2" />
+		<table name="l_prod_res_inst_rela" dataNode="bss_order$1-2" />
+		<table name="l_user_experence_adsl" dataNode="bss_order$1-2" />
+		<table name="mb_second_season_cust" dataNode="bss_order$1-2" />
+		<table name="mix_operate_rate" dataNode="bss_order$1-2" />
+		<table name="mix_operate_rate_ext" dataNode="bss_order$1-2" />
+		<table name="ml_system_operate" dataNode="bss_order$1-2" />
+		<table name="mss_contract_info" dataNode="bss_order$1-2" />
+		<table name="mss_manuno_info" dataNode="bss_order$1-2" />
+		<table name="netdisc_offer_inst" dataNode="bss_order$1-2" />
+		<table name="nores_preprocess" dataNode="bss_order$1-2" />
+		<table name="nores_preprocess_detail" dataNode="bss_order$1-2" />
+		<table name="nores_preprocess_detail_prop" dataNode="bss_order$1-2" />
+		<table name="nores_preprocess_log" dataNode="bss_order$1-2" />
+		<table name="n_staff_online" dataNode="bss_order$1-2" />
+		<table name="ods_number_subsidy" dataNode="bss_order$1-2" />
+		<table name="ods_phs" dataNode="bss_order$1-2" />
+		<table name="ods_syn_subscriber" dataNode="bss_order$1-2" />
+		<table name="ods_tb" dataNode="bss_order$1-2" />
+		<table name="ods_user_list_cfsf" dataNode="bss_order$1-2" />
+		<table name="ods_user_prompt" dataNode="bss_order$1-2" />
+		<table name="offer_campus_staff" dataNode="bss_order$1-2" />
+		<table name="offer_inst_statistics" dataNode="bss_order$1-2" />
+		<table name="offer_no_res_rel" dataNode="bss_order$1-2" />
+		<!-- <table name="offer_res_inst_rel_m4" dataNode="bss_order$1-2" /> -->
+		<table name="offer_service_chaiji_log" dataNode="bss_order$1-2" />
+		<table name="offer_service_chaiji_tdata" dataNode="bss_order$1-2" />
+		<table name="offer_service_stop_auth" dataNode="bss_order$1-2" />
+		<table name="offer_service_stop_log" dataNode="bss_order$1-2" />
+		<table name="opkg_obj_rel_detail_inst" dataNode="bss_order$1-2" />
+		<table name="order_cfboss_tyb_log" dataNode="bss_order$1-2" />
+		<table name="order_item_cancel_log" dataNode="bss_order$1-2" />
+		<table name="package_obj_rel_inst" dataNode="bss_order$1-2" />
+		<table name="page" dataNode="bss_order$1-2" />
+		<table name="payment_change" dataNode="bss_order$1-2" />
+		<table name="pf_pricing_yearlyfee_rest" dataNode="bss_order$1-2" />
+		<table name="phs_user" dataNode="bss_order$1-2" />
+		<table name="preprocess_undo_data" dataNode="bss_order$1-2" />
+		<table name="preprocess_undo_data_log" dataNode="bss_order$1-2" />
+		<table name="pre_info_config" dataNode="bss_order$1-2" />
+		<table name="pre_org_group" dataNode="bss_order$1-2" />
+		<table name="prod_inst_handle_info" dataNode="bss_order$1-2" />
+		<table name="prod_inst_prepay_amt_log" dataNode="bss_order$1-2" />
+		<table name="prod_offer_fee_info" dataNode="bss_order$1-2" />
+		<table name="prod_offer_fee_info_attr" dataNode="bss_order$1-2" />
+		<table name="query_ga_log" dataNode="bss_order$1-2" />
+		<table name="rc_psid" dataNode="bss_order$1-2" />
+		<table name="rds_cache_sql_conf" dataNode="bss_order$1-2" />
+		<table name="relay_business" dataNode="bss_order$1-2" />
+		<table name="rm_iccid_change_info" dataNode="bss_order$1-2" />
+		<table name="rm_iccid_info" dataNode="bss_order$1-2" />
+		<table name="rm_no_info" dataNode="bss_order$1-2" />
+		<table name="rn_ctx_group_number" dataNode="bss_order$1-2" />
+		<table name="rn_ctx_short_number" dataNode="bss_order$1-2" />
+		<table name="rn_telecom_no_seg" dataNode="bss_order$1-2" />
+		<table name="route_date_type" dataNode="bss_order$1-2" />
+		<table name="rpt_coupons_device_info" dataNode="bss_order$1-2" />
+		<table name="rpt_coupons_info" dataNode="bss_order$1-2" />
+		<table name="rule" dataNode="bss_order$1-2" />
+		<table name="rule_catalog" dataNode="bss_order$1-2" />
+		<table name="rule_catalog_node_element" dataNode="bss_order$1-2" />
+		<table name="rule_event" dataNode="bss_order$1-2" />
+		<table name="rule_event_rule" dataNode="bss_order$1-2" />
+		<table name="rule_express" dataNode="bss_order$1-2" />
+		<table name="rule_relation" dataNode="bss_order$1-2" />
+		<table name="rule_run_time_log" dataNode="bss_order$1-2" />
+		<table name="rule_scheme_rela" dataNode="bss_order$1-2" />
+		<table name="rw_domain" dataNode="bss_order$1-2" />
+		<table name="sale_card_log" dataNode="bss_order$1-2" />
+		<table name="sale_srv_rel" dataNode="bss_order$1-2" />
+		<table name="second_card_offer_info" dataNode="bss_order$1-2" />
+		<table name="sect" dataNode="bss_order$1-2" />
+		<table name="sect_owner" dataNode="bss_order$1-2" />
+		<table name="sect_print_comments" dataNode="bss_order$1-2" />
+		<table name="service_billing_gdk" dataNode="bss_order$1-2" />
+		<table name="service_billing_gdk_log" dataNode="bss_order$1-2" />
+		<table name="service_fiberproduct_cust" dataNode="bss_order$1-2" />
+		<table name="service_offer" dataNode="bss_order$1-2" />
+		<table name="service_offer_ext" dataNode="bss_order$1-2" />
+		<table name="serv_control_rela_cfg" dataNode="bss_order$1-2" />
+		<table name="staff_charge_right_config" dataNode="bss_order$1-2" />
+		<table name="staff_favorites" dataNode="bss_order$1-2" />
+		<table name="staff_ip_restrict" dataNode="bss_order$1-2" />
+		<table name="staff_online" dataNode="bss_order$1-2" />
+		<table name="staff_rentphone_message" dataNode="bss_order$1-2" />
+		<table name="staff_second_operator" dataNode="bss_order$1-2" />
+		<table name="stk_card_import" dataNode="bss_order$1-2" />
+		<table name="sub_prod_inst" dataNode="bss_order$1-2" />
+		<table name="sub_prod_inst_his" dataNode="bss_order$1-2" />
+		<!-- <table name="sys_export_schema_01" dataNode="bss_order$1-2" />
+		<table name="sys_export_schema_02" dataNode="bss_order$1-2" />
+		<table name="sys_export_schema_04" dataNode="bss_order$1-2" /> -->
+		<table name="table_ind_cust" dataNode="bss_order$1-2" />
+		<table name="table_ind_om" dataNode="bss_order$1-2" />
+		<table name="tache_type_page" dataNode="bss_order$1-2" />
+		<table name="template_permission" dataNode="bss_order$1-2" />
+		<table name="t_version_remind" dataNode="bss_order$1-2" />
+		<table name="t_version_sql" dataNode="bss_order$1-2" />
+		<table name="uam_inf_log" dataNode="bss_order$1-2" />
+		<table name="unband_order_item_log" dataNode="bss_order$1-2" />
+		<table name="user_experence_adsl" dataNode="bss_order$1-2" />
+		<table name="value_config" dataNode="bss_order$1-2" />
+		<table name="wlan_inst_rel" dataNode="bss_order$1-2" />
+		
+		<!-- jk_dev尚未整理的表 -->
+		<table name="bill_ext" dataNode="bss_order$1-2" />
+		<table name="cepex_config" dataNode="bss_order$1-2" />
+		<table name="cepex_config_0817" dataNode="bss_order$1-2" />
+		<table name="cepex_config_bak" dataNode="bss_order$1-2" />
+		<table name="cepex_function_config" dataNode="bss_order$1-2" />
+		<table name="cepex_general_code_map" dataNode="bss_order$1-2" />
+		<table name="cepex_order_change_errors" dataNode="bss_order$1-2" />
+		<table name="cepex_order_exception" dataNode="bss_order$1-2" />
+		<table name="cepex_order_finish_xml" dataNode="bss_order$1-2" />
+		<table name="cepex_order_map" dataNode="bss_order$1-2" />
+		<table name="cepex_prod_inst_active" dataNode="bss_order$1-2" />
+		<table name="cepex_province_lte_order" dataNode="bss_order$1-2" />
+		<table name="cepex_query_ext" dataNode="bss_order$1-2" />
+		<table name="cepex_services_xml" dataNode="bss_order$1-2" />
+		<table name="cepex_soorule_timeout_log" dataNode="bss_order$1-2" />
+		<table name="cepex_soo_info" dataNode="bss_order$1-2" />
+		<table name="cepex_soo_order_ext" dataNode="bss_order$1-2" />
+		<table name="cepex_sort" dataNode="bss_order$1-2" />
+		<table name="cepex_svc_engine" dataNode="bss_order$1-2" />
+		<table name="channel_staff_role" dataNode="bss_order$1-2" />
+		<table name="cj_inf_bill_obj" dataNode="bss_order$1-2" />
+		<table name="cj_inf_bill_offer_attr_info" dataNode="bss_order$1-2" />
+		<table name="cj_inf_bill_offer_instance" dataNode="bss_order$1-2" />
+		<table name="cj_inf_bill_order" dataNode="bss_order$1-2" />
+		<table name="cj_inf_bill_order_item_info" dataNode="bss_order$1-2" />
+		<table name="cj_inf_bill_para_info" dataNode="bss_order$1-2" />
+		<table name="cj_inf_bill_serv_attr" dataNode="bss_order$1-2" />
+		<table name="cj_inf_bill_serv_info" dataNode="bss_order$1-2" />
+		<table name="cj_inf_bill_serv_prod_attr" dataNode="bss_order$1-2" />
+		<table name="cj_inf_bill_serv_prod_info" dataNode="bss_order$1-2" />
+		<table name="contact_medium" dataNode="bss_order$1-2" />
+		<table name="crm_job_clustor" dataNode="bss_order$1-2" />
+		<table name="crm_job_run_log" dataNode="bss_order$1-2" />
+		<table name="cust_growth_acct_his" dataNode="bss_order$1-2" />
+		<table name="dc_public_dup" dataNode="bss_order$1-2" />
+		<table name="dic_co_busi_dispatch_shop_col" dataNode="bss_order$1-2" />
+		<table name="eda_member_grade_result_a5" dataNode="bss_order$1-2" />
+		<table name="edw_up_crm_flag" dataNode="bss_order$1-2" />
+		<table name="ext_sys_oper_info" dataNode="bss_order$1-2" />
+		<table name="guwangzhangduan_sale" dataNode="bss_order$1-2" />
+		<table name="his_inf_serv_state_pstn" dataNode="bss_order$1-2" />
+		<table name="hu_inf_bill_order" dataNode="bss_order$1-2" />
+		<table name="infl_bill_acct_info" dataNode="bss_order$1-2" />
+		<table name="infl_bill_cell_group" dataNode="bss_order$1-2" />
+		<table name="infl_bill_charge_detail" dataNode="bss_order$1-2" />
+		<table name="infl_bill_contact_info" dataNode="bss_order$1-2" />
+		<table name="infl_bill_corp_info" dataNode="bss_order$1-2" />
+		<table name="infl_bill_credit_limit" dataNode="bss_order$1-2" />
+		<table name="infl_bill_cust_info" dataNode="bss_order$1-2" />
+		<table name="infl_bill_group" dataNode="bss_order$1-2" />
+		<table name="infl_bill_identity_info" dataNode="bss_order$1-2" />
+		<table name="infl_bill_member_attr" dataNode="bss_order$1-2" />
+		<table name="infl_bill_nbr_group" dataNode="bss_order$1-2" />
+		<table name="infl_bill_obj" dataNode="bss_order$1-2" />
+		<table name="infl_bill_offer_attr_info" dataNode="bss_order$1-2" />
+		<table name="infl_bill_offer_instance" dataNode="bss_order$1-2" />
+		<table name="infl_bill_order" dataNode="bss_order$1-2" />
+		<table name="infl_bill_order_item_info" dataNode="bss_order$1-2" />
+		<table name="infl_bill_para_info" dataNode="bss_order$1-2" />
+		<table name="infl_bill_pay_plan" dataNode="bss_order$1-2" />
+		<table name="infl_bill_personal_info" dataNode="bss_order$1-2" />
+		<table name="infl_bill_serv_acct" dataNode="bss_order$1-2" />
+		<table name="infl_bill_serv_add_acc_nbr" dataNode="bss_order$1-2" />
+		<table name="infl_bill_serv_attr" dataNode="bss_order$1-2" />
+		<table name="infl_bill_serv_flexible_cycle" dataNode="bss_order$1-2" />
+		<table name="infl_bill_serv_info" dataNode="bss_order$1-2" />
+		<table name="infl_bill_serv_member" dataNode="bss_order$1-2" />
+		<table name="infl_bill_serv_prod_attr" dataNode="bss_order$1-2" />
+		<table name="infl_bill_serv_prod_info" dataNode="bss_order$1-2" />
+		<table name="infl_bill_serv_related" dataNode="bss_order$1-2" />
+		<table name="infl_bill_serv_rlated" dataNode="bss_order$1-2" />
+		<table name="infl_bill_settlementrela" dataNode="bss_order$1-2" />
+		<table name="infl_bill_tran_offer" dataNode="bss_order$1-2" />
+		<table name="infl_crm_cust_order" dataNode="bss_order$1-2" />
+		<table name="infl_crm_product_order" dataNode="bss_order$1-2" />
+		<table name="infl_dep_term_key_info" dataNode="bss_order$1-2" />
+		<table name="infl_dep_term_upload" dataNode="bss_order$1-2" />
+		<table name="infl_finish_flow" dataNode="bss_order$1-2" />
+		<table name="infl_finish_flow_state" dataNode="bss_order$1-2" />
+		<table name="infl_pf_rep" dataNode="bss_order$1-2" />
+		<table name="infl_serv_state_adsl" dataNode="bss_order$1-2" />
+		<table name="infl_serv_state_cdma" dataNode="bss_order$1-2" />
+		<table name="infl_serv_state_pstn" dataNode="bss_order$1-2" />
+		<table name="infl_short_msg_queue" dataNode="bss_order$1-2" />
+		<table name="infl_uam_sendperpare_info" dataNode="bss_order$1-2" />
+		<table name="infl_udb_sendperpare_info" dataNode="bss_order$1-2" />
+		<table name="infl_uvc_serv" dataNode="bss_order$1-2" />
+		<table name="infl_wq_finish" dataNode="bss_order$1-2" />
+		<table name="inf_account_check" dataNode="bss_order$1-2" />
+		<table name="inf_account_check_log" dataNode="bss_order$1-2" />
+		<table name="inf_agentdeposit_report" dataNode="bss_order$1-2" />
+		<table name="inf_all_dragon_terimal" dataNode="bss_order$1-2" />
+		<table name="inf_audit_bill_fee_info" dataNode="bss_order$1-2" />
+		<table name="inf_bill_acct_info" dataNode="bss_order$1-2" />
+		<table name="inf_bill_acct_info_temp" dataNode="bss_order$1-2" />
+		<table name="inf_bill_cell_group" dataNode="bss_order$1-2" />
+		<table name="inf_bill_charge_detail" dataNode="bss_order$1-2" />
+		<table name="inf_bill_contact_info" dataNode="bss_order$1-2" />
+		<table name="inf_bill_corp_info" dataNode="bss_order$1-2" />
+		<table name="inf_bill_credit_limit" dataNode="bss_order$1-2" />
+		<table name="inf_bill_cust_info" dataNode="bss_order$1-2" />
+		<table name="inf_bill_ewallet_info" dataNode="bss_order$1-2" />
+		<table name="inf_bill_func_config" dataNode="bss_order$1-2" />
+		<table name="inf_bill_group" dataNode="bss_order$1-2" />
+		<table name="inf_bill_group_product_map" dataNode="bss_order$1-2" />
+		<table name="inf_bill_group_region_map" dataNode="bss_order$1-2" />
+		<table name="inf_bill_identity_info" dataNode="bss_order$1-2" />
+		<table name="inf_bill_member_attr" dataNode="bss_order$1-2" />
+		<table name="inf_bill_mix_oper" dataNode="bss_order$1-2" />
+		<table name="inf_bill_nbr_group" dataNode="bss_order$1-2" />
+		<table name="inf_bill_no_validate" dataNode="bss_order$1-2" />
+		<table name="inf_bill_obj" dataNode="bss_order$1-2" />
+		<table name="inf_bill_offer_attr_info" dataNode="bss_order$1-2" />
+		<table name="inf_bill_offer_instance" dataNode="bss_order$1-2" />
+		<table name="inf_bill_offer_param_info" dataNode="bss_order$1-2" />
+		<table name="inf_bill_order" dataNode="bss_order$1-2" />
+		<table name="inf_bill_order_item_info" dataNode="bss_order$1-2" />
+		<table name="inf_bill_org_area_map" dataNode="bss_order$1-2" />
+		<table name="inf_bill_para_info" dataNode="bss_order$1-2" />
+		<table name="inf_bill_pay_plan" dataNode="bss_order$1-2" />
+		<table name="inf_bill_personal_info" dataNode="bss_order$1-2" />
+		<table name="inf_bill_serv_acct" dataNode="bss_order$1-2" />
+		<table name="inf_bill_serv_add_acc_nbr" dataNode="bss_order$1-2" />
+		<table name="inf_bill_serv_attr" dataNode="bss_order$1-2" />
+		<table name="inf_bill_serv_flexible_cycle" dataNode="bss_order$1-2" />
+		<table name="inf_bill_serv_info" dataNode="bss_order$1-2" />
+		<table name="inf_bill_serv_member" dataNode="bss_order$1-2" />
+		<table name="inf_bill_serv_prod_attr" dataNode="bss_order$1-2" />
+		<table name="inf_bill_serv_prod_info" dataNode="bss_order$1-2" />
+		<table name="inf_bill_serv_related" dataNode="bss_order$1-2" />
+		<table name="inf_bill_settlementrela" dataNode="bss_order$1-2" />
+		<table name="inf_bill_tran_offer" dataNode="bss_order$1-2" />
+		<table name="inf_bill_tran_offer_relation" dataNode="bss_order$1-2" />
+		<table name="inf_cache_config" dataNode="bss_order$1-2" />
+		<table name="inf_cc_captchacode" dataNode="bss_order$1-2" />
+		<table name="inf_cepex_channel_order" dataNode="bss_order$1-2" />
+		<table name="inf_cep_acct_item" dataNode="bss_order$1-2" />
+		<table name="inf_common_config" dataNode="bss_order$1-2" />
+		<table name="inf_comm_client_calllog" dataNode="bss_order$1-2" />
+		<table name="inf_comm_client_endpoint" dataNode="bss_order$1-2" />
+		<table name="inf_comm_client_gvar" dataNode="bss_order$1-2" />
+		<table name="inf_comm_client_log_col" dataNode="bss_order$1-2" />
+		<table name="inf_comm_client_operation" dataNode="bss_order$1-2" />
+		<table name="inf_comm_client_request" dataNode="bss_order$1-2" />
+		<table name="inf_comm_client_response" dataNode="bss_order$1-2" />
+		<table name="inf_comm_code_rela" dataNode="bss_order$1-2" />
+		<table name="inf_comm_server" dataNode="bss_order$1-2" />
+		<table name="inf_comm_server_log" dataNode="bss_order$1-2" />
+		<table name="inf_comm_server_operation" dataNode="bss_order$1-2" />
+		<table name="inf_co_busi_dispatch_shop" dataNode="bss_order$1-2" />
+		<table name="inf_crm_cust_order" dataNode="bss_order$1-2" />
+		<table name="inf_crm_product_order" dataNode="bss_order$1-2" />
+		<table name="inf_ct10000_sale_opt_pkg" dataNode="bss_order$1-2" />
+		<table name="inf_cust" dataNode="bss_order$1-2" />
+		<table name="inf_cust_credit" dataNode="bss_order$1-2" />
+		<table name="inf_cust_fax_info" dataNode="bss_order$1-2" />
+		<table name="inf_cust_fax_info_log" dataNode="bss_order$1-2" />
+		<table name="inf_datas_load_info" dataNode="bss_order$1-2" />
+		<table name="inf_data_content" dataNode="bss_order$1-2" />
+		<table name="inf_data_item" dataNode="bss_order$1-2" />
+		<table name="inf_data_item_content" dataNode="bss_order$1-2" />
+		<table name="inf_data_item_detail" dataNode="bss_order$1-2" />
+		<table name="inf_data_item_rela" dataNode="bss_order$1-2" />
+		<table name="inf_data_view" dataNode="bss_order$1-2" />
+		<table name="inf_data_view_item" dataNode="bss_order$1-2" />
+		<table name="inf_db_datasource" dataNode="bss_order$1-2" />
+		<table name="inf_db_mappedstmt" dataNode="bss_order$1-2" />
+		<table name="inf_db_mappedstmt_backup" dataNode="bss_order$1-2" />
+		<table name="inf_dc_bill_process_param" dataNode="bss_order$1-2" />
+		<table name="inf_dc_public" dataNode="bss_order$1-2" />
+		<table name="inf_define" dataNode="bss_order$1-2" />
+		<table name="inf_dep_cloub_card_finish_log" dataNode="bss_order$1-2" />
+		<table name="inf_dep_cloub_card_info" dataNode="bss_order$1-2" />
+		<table name="inf_dep_data_map" dataNode="bss_order$1-2" />
+		<table name="inf_dep_ivpn_msg_log" dataNode="bss_order$1-2" />
+		<table name="inf_dep_mb_order" dataNode="bss_order$1-2" />
+		<table name="inf_dep_msg_info" dataNode="bss_order$1-2" />
+		<table name="inf_dep_msg_log" dataNode="bss_order$1-2" />
+		<table name="inf_dep_new_mdn" dataNode="bss_order$1-2" />
+		<table name="inf_dep_order_complete_log" dataNode="bss_order$1-2" />
+		<table name="inf_dep_regist_info_key" dataNode="bss_order$1-2" />
+		<table name="inf_dep_regist_info_mdn" dataNode="bss_order$1-2" />
+		<table name="inf_dep_service_config" dataNode="bss_order$1-2" />
+		<table name="inf_dep_term_down" dataNode="bss_order$1-2" />
+		<table name="inf_dep_term_key_info" dataNode="bss_order$1-2" />
+		<table name="inf_dep_term_spec_info" dataNode="bss_order$1-2" />
+		<table name="inf_dep_term_upload" dataNode="bss_order$1-2" />
+		<table name="inf_dep_wap_error_log" dataNode="bss_order$1-2" />
+		<table name="inf_dep_wap_inst_state" dataNode="bss_order$1-2" />
+		<table name="inf_detail" dataNode="bss_order$1-2" />
+		<table name="inf_dragon_terimal_audit" dataNode="bss_order$1-2" />
+		<table name="inf_dragon_terimal_dep_log" dataNode="bss_order$1-2" />
+		<table name="inf_external_acct_info" dataNode="bss_order$1-2" />
+		<table name="inf_external_cust_info" dataNode="bss_order$1-2" />
+		<table name="inf_external_vpnmeminfo" dataNode="bss_order$1-2" />
+		<table name="inf_ext_custorder_img_log" dataNode="bss_order$1-2" />
+		<table name="inf_field" dataNode="bss_order$1-2" />
+		<table name="inf_field2" dataNode="bss_order$1-2" />
+		<table name="inf_file_ftp" dataNode="bss_order$1-2" />
+		<table name="inf_file_name_conf" dataNode="bss_order$1-2" />
+		<table name="inf_file_stmt_conf" dataNode="bss_order$1-2" />
+		<table name="inf_file_task_conf" dataNode="bss_order$1-2" />
+		<table name="inf_finish_filter" dataNode="bss_order$1-2" />
+		<table name="inf_finish_flow" dataNode="bss_order$1-2" />
+		<table name="inf_finish_tache" dataNode="bss_order$1-2" />
+		<table name="inf_ftpload_log" dataNode="bss_order$1-2" />
+		<table name="inf_ftp_config" dataNode="bss_order$1-2" />
+		<table name="inf_group_service_offer_interc" dataNode="bss_order$1-2" />
+		<table name="inf_gsecs_offer_inst" dataNode="bss_order$1-2" />
+		<table name="inf_gsecs_prod_inst" dataNode="bss_order$1-2" />
+		<table name="inf_gs_offer_confg" dataNode="bss_order$1-2" />
+		<table name="inf_hwbz_bill_acct_info" dataNode="bss_order$1-2" />
+		<table name="inf_init_credit_acct" dataNode="bss_order$1-2" />
+		<table name="inf_involved_number" dataNode="bss_order$1-2" />
+		<table name="inf_iom_attr_extent_config" dataNode="bss_order$1-2" />
+		<table name="inf_iom_back_config" dataNode="bss_order$1-2" />
+		<table name="inf_iom_document_attr_config" dataNode="bss_order$1-2" />
+		<table name="inf_iom_log" dataNode="bss_order$1-2" />
+		<table name="inf_iom_mlog" dataNode="bss_order$1-2" />
+		<table name="inf_iom_order_attr_config" dataNode="bss_order$1-2" />
+		<table name="inf_iom_product_attr_config" dataNode="bss_order$1-2" />
+		<table name="inf_ipss_acct" dataNode="bss_order$1-2" />
+		<table name="inf_ipss_cust" dataNode="bss_order$1-2" />
+		<table name="inf_ipss_file_config" dataNode="bss_order$1-2" />
+		<table name="inf_ipss_inter_charge" dataNode="bss_order$1-2" />
+		<table name="inf_ipss_mid_order_item" dataNode="bss_order$1-2" />
+		<table name="inf_ipss_offer_instance" dataNode="bss_order$1-2" />
+		<table name="inf_ipss_offer_object" dataNode="bss_order$1-2" />
+		<table name="inf_ipss_offer_res_inst_rel" dataNode="bss_order$1-2" />
+		<table name="inf_ipss_order_item" dataNode="bss_order$1-2" />
+		<table name="inf_ipss_prod_inst_state" dataNode="bss_order$1-2" />
+		<table name="inf_ipss_serv_acct" dataNode="bss_order$1-2" />
+		<table name="inf_ipss_serv_attr" dataNode="bss_order$1-2" />
+		<table name="inf_ipss_serv_history" dataNode="bss_order$1-2" />
+		<table name="inf_ipss_serv_product" dataNode="bss_order$1-2" />
+		<table name="inf_ipss_serv_product_attr" dataNode="bss_order$1-2" />
+		<table name="inf_json" dataNode="bss_order$1-2" />
+		<table name="inf_json2" dataNode="bss_order$1-2" />
+		<table name="inf_lacara_info" dataNode="bss_order$1-2" />
+		<table name="inf_lacara_info_log" dataNode="bss_order$1-2" />
+		<table name="inf_log" dataNode="bss_order$1-2" />
+		<table name="inf_lte_access_prod_inst" dataNode="bss_order$1-2" />
+		<table name="inf_lte_prod_offer_inst" dataNode="bss_order$1-2" />
+		<table name="inf_mkt_res_deal" dataNode="bss_order$1-2" />
+		<table name="inf_msg_log" dataNode="bss_order$1-2" />
+		<table name="inf_mxxt_datasyn" dataNode="bss_order$1-2" />
+		<table name="inf_nacert_opertion_queue" dataNode="bss_order$1-2" />
+		<table name="inf_nc_out_b" dataNode="bss_order$1-2" />
+		<table name="inf_nc_out_h" dataNode="bss_order$1-2" />
+		<table name="inf_nfc_card_info" dataNode="bss_order$1-2" />
+		<table name="inf_norealname_dstop" dataNode="bss_order$1-2" />
+		<table name="inf_norealname_dstop_log" dataNode="bss_order$1-2" />
+		<table name="inf_ods_sycn_log" dataNode="bss_order$1-2" />
+		<table name="inf_offer_inst_change" dataNode="bss_order$1-2" />
+		<table name="inf_operation" dataNode="bss_order$1-2" />
+		<table name="inf_operation_arg" dataNode="bss_order$1-2" />
+		<table name="inf_order_item_change" dataNode="bss_order$1-2" />
+		<table name="inf_order_item_log" dataNode="bss_order$1-2" />
+		<table name="inf_order_log" dataNode="bss_order$1-2" />
+		<table name="inf_param_define" dataNode="bss_order$1-2" />
+		<table name="inf_pf_rep" dataNode="bss_order$1-2" />
+		<table name="inf_pointgift_syn" dataNode="bss_order$1-2" />
+		<table name="inf_pointgift_syn_merger_log" dataNode="bss_order$1-2" />
+		<table name="inf_prod_attr_ctrl" dataNode="bss_order$1-2" />
+		<table name="inf_prod_attr_return" dataNode="bss_order$1-2" />
+		<table name="inf_prod_inst_rel" dataNode="bss_order$1-2" />
+		<table name="inf_query_def" dataNode="bss_order$1-2" />
+		<table name="inf_query_def_item_rel" dataNode="bss_order$1-2" />
+		<table name="inf_query_def_rel" dataNode="bss_order$1-2" />
+		<table name="inf_query_item" dataNode="bss_order$1-2" />
+		<table name="inf_query_resut_mapper" dataNode="bss_order$1-2" />
+		<table name="inf_raf_captcha_code" dataNode="bss_order$1-2" />
+		<table name="inf_raf_oog_data_log" dataNode="bss_order$1-2" />
+		<table name="inf_rela_table_info" dataNode="bss_order$1-2" />
+		<table name="inf_send_redpacket" dataNode="bss_order$1-2" />
+		<table name="inf_service_api" dataNode="bss_order$1-2" />
+		<table name="inf_service_arg" dataNode="bss_order$1-2" />
+		<table name="inf_service_offer_not_send" dataNode="bss_order$1-2" />
+		<table name="inf_service_scope" dataNode="bss_order$1-2" />
+		<table name="inf_serv_state_adsl" dataNode="bss_order$1-2" />
+		<table name="inf_serv_state_adsl_err" dataNode="bss_order$1-2" />
+		<table name="inf_serv_state_cdma" dataNode="bss_order$1-2" />
+		<table name="inf_serv_state_cdma_err" dataNode="bss_order$1-2" />
+		<table name="inf_serv_state_pstn" dataNode="bss_order$1-2" />
+		<table name="inf_serv_state_pstn_err" dataNode="bss_order$1-2" />
+		<table name="inf_short_msg_queue" dataNode="bss_order$1-2" />
+		<table name="inf_spec_credit_acct" dataNode="bss_order$1-2" />
+		<table name="inf_starlevel_fromods" dataNode="bss_order$1-2" />
+		<table name="inf_supplier" dataNode="bss_order$1-2" />
+		<table name="inf_supplier_accounts_type" dataNode="bss_order$1-2" />
+		<table name="inf_task_def" dataNode="bss_order$1-2" />
+		<table name="inf_task_def_backup" dataNode="bss_order$1-2" />
+		<table name="inf_task_handle" dataNode="bss_order$1-2" />
+		<table name="inf_task_handle_backup" dataNode="bss_order$1-2" />
+		<table name="inf_task_handle_rela" dataNode="bss_order$1-2" />
+		<table name="inf_task_handle_rela_backup" dataNode="bss_order$1-2" />
+		<table name="inf_task_info" dataNode="bss_order$1-2" />
+		<table name="inf_task_msg_config" dataNode="bss_order$1-2" />
+		<table name="inf_task_process_flow" dataNode="bss_order$1-2" />
+		<table name="inf_tax_sale_company_cfg" dataNode="bss_order$1-2" />
+		<table name="inf_temp_credit_serv" dataNode="bss_order$1-2" />
+		<table name="inf_uam_sendperpare_info" dataNode="bss_order$1-2" />
+		<table name="inf_udb_sendperpare_info" dataNode="bss_order$1-2" />
+		<table name="inf_udb_send_err_info" dataNode="bss_order$1-2" />
+		<table name="inf_uvc_ftpupload_log" dataNode="bss_order$1-2" />
+		<table name="inf_uvc_serv" dataNode="bss_order$1-2" />
+		<table name="inf_uvc_upload" dataNode="bss_order$1-2" />
+		<table name="inf_watch_app_conf" dataNode="bss_order$1-2" />
+		<table name="inf_wq_ecp_group_queue" dataNode="bss_order$1-2" />
+		<table name="inf_wq_ivpn_group_queue" dataNode="bss_order$1-2" />
+		<table name="inf_ws_clear_log" dataNode="bss_order$1-2" />
+		<table name="inf_ws_exchange_auth" dataNode="bss_order$1-2" />
+		<table name="inf_ws_exchange_client" dataNode="bss_order$1-2" />
+		<table name="inf_ws_exchange_client_ext" dataNode="bss_order$1-2" />
+		<table name="inf_ws_exchange_log" dataNode="bss_order$1-2" />
+		<table name="inf_ws_exchange_log_col" dataNode="bss_order$1-2" />
+		<table name="inf_ws_exchange_provide" dataNode="bss_order$1-2" />
+		<table name="inf_ws_exchange_synbiz_path" dataNode="bss_order$1-2" />
+		<table name="inf_ws_exchange_syninfo" dataNode="bss_order$1-2" />
+		<table name="intf_iom_serv_off_revocation" dataNode="bss_order$1-2" />
+		<table name="invoice_cepex_middle" dataNode="bss_order$1-2" />
+		<table name="invoice_detail" dataNode="bss_order$1-2" />
+		<table name="jk_bill_serv_offer_trans" dataNode="bss_order$1-2" />
+		<table name="job_execution_log" dataNode="bss_order$1-2" />
+		<table name="job_operation_log" dataNode="bss_order$1-2" />
+		<table name="job_status_trace_log" dataNode="bss_order$1-2" />
+		<table name="jt_order_rel" dataNode="bss_order$1-2" />
+		<table name="l_cepex_services_xml" dataNode="bss_order$1-2" />
+		<table name="l_cepex_soo_order_ext" dataNode="bss_order$1-2" />
+		<table name="l_csb_soo_log" dataNode="bss_order$1-2" />
+		<table name="l_inf_mkt_res_deal" dataNode="bss_order$1-2" />
+		<table name="l_service_billing_remove" dataNode="bss_order$1-2" />
+		<table name="mb_info_config" dataNode="bss_order$1-2" />
+		<table name="mid_api_imp" dataNode="bss_order$1-2" />
+		<table name="mid_api_imp_crm" dataNode="bss_order$1-2" />
+		<table name="ods_busi_info" dataNode="bss_order$1-2" />
+		<table name="ods_busi_info_log" dataNode="bss_order$1-2" />
+		<table name="ods_exp_up_ods_sjd_nochg4g" dataNode="bss_order$1-2" />
+		<table name="order_finish_trace" dataNode="bss_order$1-2" />
+		<table name="query_items_desensitive" dataNode="bss_order$1-2" />
+		<table name="q_cepex_services_xml" dataNode="bss_order$1-2" />
+		<table name="rds_cache_pusher" dataNode="bss_order$1-2" />
+		<table name="rm_five_region" dataNode="bss_order$1-2" />
+		<table name="rule_soo_check" dataNode="bss_order$1-2" />
+		<table name="rule_soo_pre_check" dataNode="bss_order$1-2" />
+		<table name="sales_resource_attr" dataNode="bss_order$1-2" />
+		<table name="service_billing_remove" dataNode="bss_order$1-2" />
+		<table name="service_billing_remove_err" dataNode="bss_order$1-2" />
+		<table name="service_billing_remove_his" dataNode="bss_order$1-2" />
+		<table name="service_billing_remove_islte" dataNode="bss_order$1-2" />
+		<table name="serv_remove_billing_lihui" dataNode="bss_order$1-2" />
+		<table name="serv_remove_billing_lihui_sc" dataNode="bss_order$1-2" />
+		<table name="temp_compare" dataNode="bss_order$1-2" />
+		<table name="temp_qry_inf" dataNode="bss_order$1-2" />
+		<table name="temp_sort" dataNode="bss_order$1-2" />
+		<table name="yzf_inst_deposit_result" dataNode="bss_order$1-2" />
+		
+		<!-- cpc未整理的表 -->
+		<table name="acct_item_group" dataNode="bss_order$1-2" />
+		<table name="acct_item_type" dataNode="bss_order$1-2" />
+		<table name="action_type_bk" dataNode="bss_order$1-2" />
+		<table name="arc_catalog" dataNode="bss_order$1-2" />
+		<table name="arc_catalog_item" dataNode="bss_order$1-2" />
+		<table name="arc_df_offer_print_detail" dataNode="bss_order$1-2" />
+		<table name="arc_maket_strategy" dataNode="bss_order$1-2" />
+		<table name="arc_offer_relation_def" dataNode="bss_order$1-2" />
+		<table name="arc_offer_relation_restricted" dataNode="bss_order$1-2" />
+		<table name="arc_offer_warr_requement" dataNode="bss_order$1-2" />
+		<table name="arc_ord_ask_pm" dataNode="bss_order$1-2" />
+		<table name="arc_pm_promotion" dataNode="bss_order$1-2" />
+		<table name="arc_pm_promotion_bureau" dataNode="bss_order$1-2" />
+		<table name="arc_product" dataNode="bss_order$1-2" />
+		<table name="arc_product_bureau" dataNode="bss_order$1-2" />
+		<table name="arc_product_catalog" dataNode="bss_order$1-2" />
+		<table name="arc_product_catalog_item" dataNode="bss_order$1-2" />
+		<table name="arc_product_ent" dataNode="bss_order$1-2" />
+		<table name="arc_product_group_member" dataNode="bss_order$1-2" />
+		<table name="arc_product_offer_bureau" dataNode="bss_order$1-2" />
+		<table name="arc_product_offer_credit" dataNode="bss_order$1-2" />
+		<table name="arc_product_offer_detail" dataNode="bss_order$1-2" />
+		<table name="arc_product_offer_detail_base" dataNode="bss_order$1-2" />
+		<table name="arc_product_offer_service" dataNode="bss_order$1-2" />
+		<table name="arc_product_service_relation" dataNode="bss_order$1-2" />
+		<table name="arc_prod_catalog_item_element" dataNode="bss_order$1-2" />
+		<table name="arc_prod_comp_detail_role" dataNode="bss_order$1-2" />
+		<table name="arc_prod_mkt_res_rela" dataNode="bss_order$1-2" />
+		<table name="arc_prod_offer" dataNode="bss_order$1-2" />
+		<table name="arc_prod_offer_group_relation" dataNode="bss_order$1-2" />
+		<table name="arc_prod_offer_para" dataNode="bss_order$1-2" />
+		<table name="arc_prod_offer_period" dataNode="bss_order$1-2" />
+		<table name="arc_prod_offer_privilege" dataNode="bss_order$1-2" />
+		<table name="arc_prod_offer_rela" dataNode="bss_order$1-2" />
+		<table name="arc_prod_offer_relation_group" dataNode="bss_order$1-2" />
+		<table name="arc_prod_offer_res_rela" dataNode="bss_order$1-2" />
+		<table name="arc_role_prod_rela" dataNode="bss_order$1-2" />
+		<table name="arc_sales_restrication" dataNode="bss_order$1-2" />
+		<table name="arc_service_bureau" dataNode="bss_order$1-2" />
+		<table name="arc_service_control_scope" dataNode="bss_order$1-2" />
+		<table name="arc_service_group_relation" dataNode="bss_order$1-2" />
+		<table name="arc_service_offer" dataNode="bss_order$1-2" />
+		<table name="arc_service_relation" dataNode="bss_order$1-2" />
+		<table name="arc_service_relation_group" dataNode="bss_order$1-2" />
+		<table name="arc_tpm_busi_price" dataNode="bss_order$1-2" />
+		<table name="arc_tpm_busi_price_para" dataNode="bss_order$1-2" />
+		<table name="arc_tpm_busi_price_plan" dataNode="bss_order$1-2" />
+		<table name="arc_tpm_card_attr" dataNode="bss_order$1-2" />
+		<table name="arc_tpm_card_attr_control" dataNode="bss_order$1-2" />
+		<table name="arc_tpm_card_type" dataNode="bss_order$1-2" />
+		<table name="arc_tpm_constraint" dataNode="bss_order$1-2" />
+		<table name="arc_tpm_constraint_condition" dataNode="bss_order$1-2" />
+		<table name="arc_tpm_constraint_para" dataNode="bss_order$1-2" />
+		<table name="arc_tpm_constraint_path" dataNode="bss_order$1-2" />
+		<table name="arc_tpm_constraint_values" dataNode="bss_order$1-2" />
+		<table name="arc_tpm_note" dataNode="bss_order$1-2" />
+		<table name="arc_tpm_note_bureau" dataNode="bss_order$1-2" />
+		<table name="arc_tpm_solution" dataNode="bss_order$1-2" />
+		<table name="arc_tpm_solution_bureau" dataNode="bss_order$1-2" />
+		<table name="arc_tpm_solution_limit" dataNode="bss_order$1-2" />
+		<table name="attr_pack" dataNode="bss_order$1-2" />
+		<table name="attr_value_type" dataNode="bss_order$1-2" />
+		<table name="attr_value_unit" dataNode="bss_order$1-2" />
+		<table name="brand" dataNode="bss_order$1-2" />
+		<table name="catalog" dataNode="bss_order$1-2" />
+		<table name="catalog_item" dataNode="bss_order$1-2" />
+		<table name="catalog_item_element" dataNode="bss_order$1-2" />
+		<table name="constraint_pack" dataNode="bss_order$1-2" />
+		<table name="constraint_pack_object" dataNode="bss_order$1-2" />
+		<table name="dc_print_message_new" dataNode="bss_order$1-2" />
+		<table name="deal_rule" dataNode="bss_order$1-2" />
+		<table name="df_offer_gift_set" dataNode="bss_order$1-2" />
+		<table name="df_offer_print_detail" dataNode="bss_order$1-2" />
+		<table name="df_product_attr_print" dataNode="bss_order$1-2" />
+		<table name="ismp_prod_offer_rel" dataNode="bss_order$1-2" />
+		<table name="lac_grp" dataNode="bss_order$1-2" />
+		<table name="limit_attribute_value" dataNode="bss_order$1-2" />
+		<table name="maket_strategy" dataNode="bss_order$1-2" />
+		<table name="map_staff_ppm" dataNode="bss_order$1-2" />
+		<table name="mkt_resource_type" dataNode="bss_order$1-2" />
+		<table name="mp_apver" dataNode="bss_order$1-2" />
+		<table name="mp_apver_amonut" dataNode="bss_order$1-2" />
+		<table name="mp_apver_area" dataNode="bss_order$1-2" />
+		<table name="mp_apver_auth" dataNode="bss_order$1-2" />
+		<table name="mp_apver_party_set" dataNode="bss_order$1-2" />
+		<table name="mp_apver_set" dataNode="bss_order$1-2" />
+		<table name="ord_ask_pm" dataNode="bss_order$1-2" />
+		<table name="ord_ask_relation" dataNode="bss_order$1-2" />
+		<table name="o_df_offer_gift_set" dataNode="bss_order$1-2" />
+		<table name="o_df_offer_print_detail" dataNode="bss_order$1-2" />
+		<table name="o_product" dataNode="bss_order$1-2" />
+		<table name="o_product_attr" dataNode="bss_order$1-2" />
+		<table name="o_product_bureau" dataNode="bss_order$1-2" />
+		<table name="o_product_catalog_item_element" dataNode="bss_order$1-2" />
+		<table name="o_product_group_relation" dataNode="bss_order$1-2" />
+		<table name="o_product_offer_bureau" dataNode="bss_order$1-2" />
+		<table name="o_product_offer_detail" dataNode="bss_order$1-2" />
+		<table name="o_product_offer_detail_base" dataNode="bss_order$1-2" />
+		<table name="o_product_offer_group_relation" dataNode="bss_order$1-2" />
+		<table name="o_product_offer_relation_group" dataNode="bss_order$1-2" />
+		<table name="o_product_offer_service" dataNode="bss_order$1-2" />
+		<table name="o_product_relation" dataNode="bss_order$1-2" />
+		<table name="o_product_relation_group" dataNode="bss_order$1-2" />
+		<table name="o_prod_offer" dataNode="bss_order$1-2" />
+		<table name="o_prod_offer_para" dataNode="bss_order$1-2" />
+		<table name="o_prod_offer_period" dataNode="bss_order$1-2" />
+		<table name="o_prod_offer_rela" dataNode="bss_order$1-2" />
+		<table name="page_define" dataNode="bss_order$1-2" />
+		<table name="page_wizard_bk" dataNode="bss_order$1-2" />
+		<table name="pfl_device_coupons" dataNode="bss_order$1-2" />
+		<table name="pf_coupons_info" dataNode="bss_order$1-2" />
+		<table name="pf_coupons_info_his" dataNode="bss_order$1-2" />
+		<table name="pf_coupons_info_log" dataNode="bss_order$1-2" />
+		<table name="pf_device_coupons" dataNode="bss_order$1-2" />
+		<table name="pm_promotion" dataNode="bss_order$1-2" />
+		<table name="pm_promotion_bureau" dataNode="bss_order$1-2" />
+		<table name="pricing_detail" dataNode="bss_order$1-2" />
+		<table name="pricing_detail_region" dataNode="bss_order$1-2" />
+		<table name="pricing_plan" dataNode="bss_order$1-2" />
+		<table name="pricing_plan_detail" dataNode="bss_order$1-2" />
+		<table name="pricing_plan_detail_region" dataNode="bss_order$1-2" />
+		<table name="promotion_score" dataNode="bss_order$1-2" />
+		<table name="relation_type_ref" dataNode="bss_order$1-2" />
+		<table name="role" dataNode="bss_order$1-2" />
+		<table name="role_prod_rela" dataNode="bss_order$1-2" />
+		<table name="rw_xst_acc" dataNode="bss_order$1-2" />
+		<table name="sales_restrication" dataNode="bss_order$1-2" />
+		<table name="service_bureau" dataNode="bss_order$1-2" />
+		<table name="service_control_scope" dataNode="bss_order$1-2" />
+		<table name="service_feature" dataNode="bss_order$1-2" />
+		<table name="service_limit_state" dataNode="bss_order$1-2" />
+		<table name="service_offer_bk" dataNode="bss_order$1-2" />
+		<table name="service_offer_ext_bk" dataNode="bss_order$1-2" />
+		<table name="service_offer_feature" dataNode="bss_order$1-2" />
+		<table name="service_page" dataNode="bss_order$1-2" />
+		<table name="service_relation" dataNode="bss_order$1-2" />
+		<table name="service_relation_group" dataNode="bss_order$1-2" />
+		<table name="service_splict_scope" dataNode="bss_order$1-2" />
+		<table name="special_offer" dataNode="bss_order$1-2" />
+		<table name="spec_feature" dataNode="bss_order$1-2" />
+		<table name="spec_java" dataNode="bss_order$1-2" />
+		<table name="tax_item" dataNode="bss_order$1-2" />
+		<table name="time_segment" dataNode="bss_order$1-2" />
+		<table name="tpm_busi_price" dataNode="bss_order$1-2" />
+		<table name="tpm_busi_price_para" dataNode="bss_order$1-2" />
+		<table name="tpm_busi_price_plan" dataNode="bss_order$1-2" />
+		<table name="tpm_card_attr" dataNode="bss_order$1-2" />
+		<table name="tpm_card_attr_control" dataNode="bss_order$1-2" />
+		<table name="tpm_card_type" dataNode="bss_order$1-2" />
+		<table name="tpm_constraint" dataNode="bss_order$1-2" />
+		<table name="tpm_constraint_attr" dataNode="bss_order$1-2" />
+		<table name="tpm_constraint_condition" dataNode="bss_order$1-2" />
+		<table name="tpm_constraint_para" dataNode="bss_order$1-2" />
+		<table name="tpm_constraint_path" dataNode="bss_order$1-2" />
+		<table name="tpm_constraint_type" dataNode="bss_order$1-2" />
+		<table name="tpm_constraint_values" dataNode="bss_order$1-2" />
+		<table name="tpm_nav_type" dataNode="bss_order$1-2" />
+		<table name="tpm_note" dataNode="bss_order$1-2" />
+		<table name="tpm_note_bureau" dataNode="bss_order$1-2" />
+		<table name="tpm_object_type" dataNode="bss_order$1-2" />
+		<table name="tpm_rule_type" dataNode="bss_order$1-2" />
+		<table name="tpm_solution" dataNode="bss_order$1-2" />
+		<table name="tpm_solution_bureau" dataNode="bss_order$1-2" />
+		<table name="tpm_solution_limit" dataNode="bss_order$1-2" />
+		<table name="tsm_ba_channel" dataNode="bss_order$1-2" />
+		<table name="tvlpm_busi_data_check" dataNode="bss_order$1-2" />
+		<table name="unit_msg_config" dataNode="bss_order$1-2" />
+		
+		<!-- mbmarket_dev未整理的表 -->
+		<table name="cm_staff_binding" type="global" dataNode="bss_order$1-2" />
+		<table name="cm_staff_binding_log" type="global" dataNode="bss_order$1-2" />
+		<table name="group_no_paper_result" type="global" dataNode="bss_order$1-2" />
+		<table name="inf_intelligent_market_log" type="global" dataNode="bss_order$1-2" />
+		<table name="involved_number" type="global" dataNode="bss_order$1-2" />
+		<table name="involved_number_his" type="global" dataNode="bss_order$1-2" />
+		<table name="log_pre_accept" type="global" dataNode="bss_order$1-2" />
+		<table name="l_involved_number" type="global" dataNode="bss_order$1-2" />
+		<table name="mm_query_config" type="global" dataNode="bss_order$1-2" />
+		<table name="pay_code_order" type="global" dataNode="bss_order$1-2" />
+		<table name="pre_acct_info" type="global" dataNode="bss_order$1-2" />
+		<table name="pre_cancle_type" type="global" dataNode="bss_order$1-2" />
+		<table name="pre_cust_change" type="global" dataNode="bss_order$1-2" />
+		<table name="pre_cust_img" type="global" dataNode="bss_order$1-2" />
+		<table name="pre_cust_info" type="global" dataNode="bss_order$1-2" />
+		<table name="pre_fee_info" type="global" dataNode="bss_order$1-2" />
+		<table name="pre_fee_rule" type="global" dataNode="bss_order$1-2" />
+		<table name="pre_func_product" type="global" dataNode="bss_order$1-2" />
+		<!-- <table name="pre_info_config" type="global" dataNode="bss_order$1-2" /> -->
+		<table name="pre_info_order" type="global" dataNode="bss_order$1-2" />
+		<table name="pre_info_order_item" type="global" dataNode="bss_order$1-2" />
+		<table name="pre_lte_number" type="global" dataNode="bss_order$1-2" />
+		<table name="pre_memo_info" type="global" dataNode="bss_order$1-2" />
+		<table name="pre_number_level_rule" type="global" dataNode="bss_order$1-2" />
+		<table name="pre_offer_inst_info" type="global" dataNode="bss_order$1-2" />
+		<table name="pre_order_change_log" type="global" dataNode="bss_order$1-2" />
+		<table name="pre_order_info" type="global" dataNode="bss_order$1-2" />
+		<table name="pre_order_item_report_detail" type="global" dataNode="bss_order$1-2" />
+		<table name="pre_order_target_org" type="global" dataNode="bss_order$1-2" />
+		<table name="pre_org_info" type="global" dataNode="bss_order$1-2" />
+		<table name="pre_prod_inst_info" type="global" dataNode="bss_order$1-2" />
+		<table name="pre_prod_offer" type="global" dataNode="bss_order$1-2" />
+		<table name="pre_single_login" type="global" dataNode="bss_order$1-2" />
+		<table name="pre_staff_group" type="global" dataNode="bss_order$1-2" />
+		<table name="pre_table_attr_def" type="global" dataNode="bss_order$1-2" />
+		<table name="pre_t_order_item_report" type="global" dataNode="bss_order$1-2" />
+		<table name="stop_point_info" type="global" dataNode="bss_order$1-2" />
+		<table name="s_prod_offer" type="global" dataNode="bss_order$1-2" />
+		<table name="s_prod_offer_price" type="global" dataNode="bss_order$1-2" />
+		<table name="term_model_info" type="global" dataNode="bss_order$1-2" />
+		<table name="zfb_url" type="global" dataNode="bss_order$1-2" />
+		
+	</schema>
+	<!-- 客户中心 集团入网测试  DDL场景，实际生产不需要 -->
+	<schema name="JTCUSTDB" checkSQLschema="false" sqlMaxLimit="100000">
+		<!-- 客户表分片策略 -->
+		<table name="customer" dataNode="bss_jtcust$1-2" rule="customer_rule" primaryKey="cust_id">
+		</table>
+	</schema>
+		
+	<!--                 数据分片                 -->
+	<!-- 客户中心 -->
+	<dataNode name="bss_dn1" dataHost="hn_104_cust" database="BSS_CUST_DEV"/>
+	<dataNode name="bss_dn2" dataHost="hn_111_cust"   database="BSS_CUST_DEV"/>
+	<!-- 受理中心 -->
+	<dataNode name="bss_order1" dataHost="hn_104_order" database="BSS_ORD_DEV"/>
+	<dataNode name="bss_order2" dataHost="hn_111_order"   database="BSS_ORD_DEV"/>
+	<!-- 客户中心 集团入网测试  DDL场景，实际生产不需要 -->
+	<dataNode name="bss_jtcust1" dataHost="jt_104_cust" database="CUST_DEV"/>
+	<dataNode name="bss_jtcust2" dataHost="jt_111_cust"   database="CUST_DEV"/>
+	
+	<!--                 数据主机，即物理库                 -->
+	<!-- 客户中心 -->
+	<dataHost name="hn_104_cust" maxCon="3000" minCon="100" balance="0"
+			  writeType="0" dbType="oracle" dbDriver="jdbc" switchType="-1"  slaveThreshold="100">
+		<heartbeat>select 1 from dual</heartbeat>
+		
+		<!-- can have multi write hosts -->
+		<writeHost host="hostM1" url="jdbc:oracle:thin:@134.161.153.104:1521:orcl" 
+							 user="BSS_CUST_DEV" password="Bss3Soft">
+			<!-- can have multi read hosts -->
+		</writeHost>
+	</dataHost>
+	<dataHost name="hn_111_cust" maxCon="3000" minCon="100" balance="0"
+			  writeType="0" dbType="oracle" dbDriver="jdbc" switchType="-1"  slaveThreshold="100">
+		<heartbeat>select 1 from dual</heartbeat>
+		
+		<!-- can have multi write hosts -->
+		<writeHost host="hostM1" url="jdbc:oracle:thin:@134.161.153.111:1521:orcl" 
+							user="BSS_CUST_DEV" password="Bss3Soft">
+			<!-- can have multi read hosts -->
+		</writeHost>
+	</dataHost>
+	<!-- 受理中心 -->
+	<dataHost name="hn_104_order" maxCon="3000" minCon="100" balance="0"
+			  writeType="0" dbType="oracle" dbDriver="jdbc" switchType="-1"  slaveThreshold="100">
+		<heartbeat>select 1 from dual</heartbeat>
+		
+		<!-- can have multi write hosts -->
+		<writeHost host="hostM1" url="jdbc:oracle:thin:@134.161.153.104:1521:orcl" 
+							 user="BSS_ORD_DEV" password="Bss3Soft">
+			<!-- can have multi read hosts -->
+		</writeHost>
+	</dataHost>
+	<dataHost name="hn_111_order" maxCon="3000" minCon="100" balance="0"
+			  writeType="0" dbType="oracle" dbDriver="jdbc" switchType="-1"  slaveThreshold="100">
+		<heartbeat>select 1 from dual</heartbeat>
+		
+		<!-- can have multi write hosts -->
+		<writeHost host="hostM1" url="jdbc:oracle:thin:@134.161.153.111:1521:orcl" 
+							user="BSS_ORD_DEV" password="Bss3Soft">
+			<!-- can have multi read hosts -->
+		</writeHost>
+	</dataHost>
+	<!-- 客户中心 集团入网测试  DDL场景，实际生产不需要 -->
+	<dataHost name="jt_104_cust" maxCon="1000" minCon="10" balance="0"
+			  writeType="0" dbType="oracle" dbDriver="jdbc" switchType="-1"  slaveThreshold="100">
+		<heartbeat>select 1 from dual</heartbeat>
+		<writeHost host="hostM1" url="jdbc:oracle:thin:@134.161.153.104:1521:orcl" 
+							 user="CUST_DEV" password="Bss3Soft">
+		</writeHost>
+	</dataHost>
+	<dataHost name="jt_111_cust" maxCon="1000" minCon="10" balance="0"
+			  writeType="0" dbType="oracle" dbDriver="jdbc" switchType="-1"  slaveThreshold="100">
+		<heartbeat>select 1 from dual</heartbeat>
+		<writeHost host="hostM1" url="jdbc:oracle:thin:@134.161.153.111:1521:orcl" 
+							user="CUST_DEV" password="Bss3Soft">
+		</writeHost>
+	</dataHost>
+	<!-- <dataHost name="hn_41" maxCon="1000" minCon="10" balance="0"
+			  writeType="0" dbType="oracle" dbDriver="jdbc" switchType="-1"  slaveThreshold="100">
+		<heartbeat>select 1 from dual</heartbeat>
+		
+		<writeHost host="hostM1" url="jdbc:oracle:thin:@134.176.56.41:1521:tcrmapp" 
+							 user="BSS_CUST_DEV" password="Bss3Soft">
+		</writeHost>
+	</dataHost>
+	<dataHost name="hn_6" maxCon="1000" minCon="10" balance="0"
+			  writeType="0" dbType="oracle" dbDriver="jdbc" switchType="-1"  slaveThreshold="100">
+		<heartbeat>select 1 from dual</heartbeat>
+		
+		<writeHost host="hostM1" url="jdbc:oracle:thin:@134.176.60.6:1521:tbssdb1" 
+							user="BSS_CUST_DEV" password="Bss3Soft">
+		</writeHost>
+	</dataHost> -->
+	
+</mycat:schema>
