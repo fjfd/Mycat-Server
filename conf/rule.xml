@@ -164,7 +164,7 @@
 		<property name="virtualBucketTimes">160</property>
 		<!--节点的权重，没有指定权重的节点默认是 1。以 properties 文件的格式填写，以从 0 开始到 count-1 的整数值也就
 		是节点索引为 key，以节点权重值为值。所有权重值必须是正整数，否则以 1 代替 -->
-		<property name="weightMapFile">weightMapFile.properties</property>
+		<!-- <property name="weightMapFile">weightMapFile.properties</property> -->
 	</function>
 	<!-- 按单月小时拆分 -->
 	<function name="LatestMonthPartion" class="io.mycat.route.function.LatestMonthPartion">

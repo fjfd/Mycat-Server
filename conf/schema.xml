@@ -2,10 +2,14 @@
 <!DOCTYPE mycat:schema SYSTEM "schema.dtd">
 <mycat:schema xmlns:mycat="http://io.mycat/">
 
-	<schema name="zop_sm" checkSQLschema="false" sqlMaxLimit="100" dataNode="zop_dev_dn">
-		<table name="temp_table" primaryKey="pk_id" dataNode="zop_dev_dn,zop_test_dn" needAddLimit="false" rule="PartitionByMonth" />
-		<!-- 
+	<schema name="BSS_ORDER" checkSQLschema="false" sqlMaxLimit="100" dataNode="HN_112_DN">
+		<table name="zdsf_temp_table" primaryKey="pk_id" dataNode="HN_112_DN,HN_113_DN" needAddLimit="false" rule="PartitionByMod" />
 		
+		<!-- <table name="test_rwcs_timestap" dataNode="HN_112_DN,HN_113_DN" rule="customer_rule" primaryKey="cust_id"/> -->
+
+		
+		<!-- 
+		<table name="zdsf_temp_table" primaryKey="pk_id" dataNode="HN_112_DN,HN_113_DN" needAddLimit="false" rule="PartitionByMonth" />
 		<table name="temp_table" primaryKey="pk_id" dataNode="zop_dev_dn,zop_test_dn" needAddLimit="false" rule="PartitionByFileMap" />
 		<table name="temp_table" primaryKey="pk_id" dataNode="zop_dev_dn,zop_test_dn" needAddLimit="false" rule="PartitionByLong" />
 		<table name="temp_table" primaryKey="pk_id" dataNode="zop_dev_dn,zop_test_dn" needAddLimit="false" rule="AutoPartitionByLong" />
@@ -24,22 +28,20 @@
 	</schema>
 	
 		
-	<dataNode name="zop_dev_dn" dataHost="zop_dev_dh" database="ORCL" />
-	<dataNode name="zop_test_dn" dataHost="zop_test_dh" database="ORCL" />
+	<dataNode name="HN_112_DN" dataHost="HN_112_ORCL" database="ORCL" />
+	<dataNode name="HN_113_DN" dataHost="HN_113_ORCL" database="ORCL" />
 	
 	
 	
 	
-	<dataHost name="zop_dev_dh" writeType="0" balance="0" dbType="oracle" maxCon="1000" minCon="1" dbDriver="jdbc">
+	<dataHost name="HN_112_ORCL" writeType="0" balance="0" dbType="oracle" maxCon="1000" minCon="1" dbDriver="jdbc">
 		<heartbeat></heartbeat>
-		<writeHost host="hostM1" url="jdbc:oracle:thin:@10.45.147.93:1521:orcl" user="ZOP" password="ZOP" />
+		<writeHost host="hostM1" url="jdbc:oracle:thin:@134.161.153.112:1521:orcl" user="BSS_ORD_DEV" password="Bss3Soft" />
 	</dataHost>
-	<dataHost name="zop_test_dh" writeType="0" balance="0" dbType="oracle" maxCon="1000" minCon="1" dbDriver="jdbc">
+	<dataHost name="HN_113_ORCL" writeType="0" balance="0" dbType="oracle" maxCon="1000" minCon="1" dbDriver="jdbc">
 		<heartbeat></heartbeat>
-		<writeHost host="hostM1" url="jdbc:oracle:thin:@10.45.147.93:1521:orcl" user="zop_test" password="zop_test" />
+		<writeHost host="hostM1" url="jdbc:oracle:thin:@134.161.153.113:1521:orcl" user="BSS_ORD_DEV" password="Bss3Soft" />
 	</dataHost>
-	
-
 
 	<!--
 		<dataHost name="sequoiadb1" maxCon="1000" minCon="1" balance="0" dbType="sequoiadb" dbDriver="jdbc">
