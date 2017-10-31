@@ -1,0 +1,67 @@
+<?xml version="1.0"?>
+<!DOCTYPE mycat:schema SYSTEM "schema.dtd">
+<mycat:schema xmlns:mycat="http://io.mycat/">
+
+	<schema name="BSS_ORDER" checkSQLschema="false" sqlMaxLimit="100" dataNode="HN_112_DN">
+		<table name="zdsf_temp_table" primaryKey="pk_id" dataNode="HN_112_DN,HN_113_DN" needAddLimit="false" rule="PartitionByMonth" />
+		
+		<!-- <table name="test_rwcs_timestap" dataNode="HN_112_DN,HN_113_DN" rule="customer_rule" primaryKey="cust_id"/> -->
+
+		
+		<!-- 
+		
+		<table name="temp_table" primaryKey="pk_id" dataNode="zop_dev_dn,zop_test_dn" needAddLimit="false" rule="PartitionByFileMap" />
+		<table name="temp_table" primaryKey="pk_id" dataNode="zop_dev_dn,zop_test_dn" needAddLimit="false" rule="PartitionByLong" />
+		<table name="temp_table" primaryKey="pk_id" dataNode="zop_dev_dn,zop_test_dn" needAddLimit="false" rule="AutoPartitionByLong" />
+		<table name="temp_table" primaryKey="pk_id" dataNode="zop_dev_dn,zop_test_dn" needAddLimit="false" rule="PartitionByMod" />
+		<table name="temp_table" primaryKey="pk_id" dataNode="zop_dev_dn,zop_test_dn" needAddLimit="false" rule="PartitionByDate" />
+		<table name="temp_table" primaryKey="pk_id" dataNode="zop_dev_dn,zop_test_dn" needAddLimit="false" rule="PartitionByPattern" />
+		<table name="temp_table" primaryKey="pk_id" dataNode="zop_dev_dn,zop_test_dn" needAddLimit="false" rule="PartitionByPrefixPattern" />
+		<table name="temp_table" primaryKey="pk_id" dataNode="zop_dev_dn,zop_test_dn" needAddLimit="false" rule="PartitionDirectBySubString" />
+		<table name="temp_table" primaryKey="pk_id" dataNode="zop_dev_dn,zop_test_dn" needAddLimit="false" rule="PartitionByString" />
+		<table name="temp_table" primaryKey="pk_id" dataNode="zop_dev_dn,zop_test_dn" needAddLimit="false" rule="PartitionByMurmurHash" />
+		<table name="temp_table" primaryKey="pk_id" dataNode="zop_dev_dn,zop_test_dn" needAddLimit="false" rule="LatestMonthPartion" />
+		<table name="temp_table" primaryKey="pk_id" dataNode="zop_dev_dn,zop_test_dn" needAddLimit="false" rule="PartitionByRangeMod" />
+		<table name="temp_table" primaryKey="pk_id" dataNode="zop_dev_dn,zop_test_dn" needAddLimit="false" rule="PartitionByRangeDateHash" />
+		<table name="temp_table" primaryKey="pk_id" dataNode="zop_dev_dn,zop_test_dn" needAddLimit="false" rule="PartitionByHotDate" />
+		 -->
+	</schema>
+	
+		
+	<dataNode name="HN_112_DN" dataHost="HN_112_ORCL" database="ORCL" />
+	<dataNode name="HN_113_DN" dataHost="HN_113_ORCL" database="ORCL" />
+	
+	
+	
+	
+	<dataHost name="HN_112_ORCL" writeType="0" balance="0" dbType="oracle" maxCon="1000" minCon="1" dbDriver="jdbc">
+		<heartbeat></heartbeat>
+		<writeHost host="hostM1" url="jdbc:oracle:thin:@134.161.153.112:1521:orcl" user="BSS_ORD_DEV" password="Bss3Soft" />
+	</dataHost>
+	<dataHost name="HN_113_ORCL" writeType="0" balance="0" dbType="oracle" maxCon="1000" minCon="1" dbDriver="jdbc">
+		<heartbeat></heartbeat>
+		<writeHost host="hostM1" url="jdbc:oracle:thin:@134.161.153.113:1521:orcl" user="BSS_ORD_DEV" password="Bss3Soft" />
+	</dataHost>
+	
+
+
+	<!--
+		<dataHost name="sequoiadb1" maxCon="1000" minCon="1" balance="0" dbType="sequoiadb" dbDriver="jdbc">
+		<heartbeat> 		</heartbeat>
+		 <writeHost host="hostM1" url="sequoiadb://1426587161.dbaas.sequoialab.net:11920/SAMPLE" user="jifeng" 	password="jifeng"></writeHost>
+		 </dataHost>
+
+	  <dataHost name="oracle1" maxCon="1000" minCon="1" balance="0" writeType="0" 	dbType="oracle" dbDriver="jdbc"> <heartbeat>select 1 from dual</heartbeat>
+		<connectionInitSql>alter session set nls_date_format='yyyy-mm-dd hh24:mi:ss'</connectionInitSql>
+		<writeHost host="hostM1" url="jdbc:oracle:thin:@127.0.0.1:1521:nange" user="base" 	password="123456" > </writeHost> </dataHost>
+
+		<dataHost name="jdbchost" maxCon="1000" 	minCon="1" balance="0" writeType="0" dbType="mongodb" dbDriver="jdbc">
+		<heartbeat>select 	user()</heartbeat>
+		<writeHost host="hostM" url="mongodb://192.168.0.99/test" user="admin" password="123456" ></writeHost> </dataHost>
+
+		<dataHost name="sparksql" maxCon="1000" minCon="1" balance="0" dbType="spark" dbDriver="jdbc">
+		<heartbeat> </heartbeat>
+		 <writeHost host="hostM1" url="jdbc:hive2://feng01:10000" user="jifeng" 	password="jifeng"></writeHost> </dataHost> -->
+
+	<!-- <dataHost name="jdbchost" maxCon="1000" minCon="10" balance="0" dbType="mysql"
+		dbDriver="jdbc"> <heartbeat>select user()</heartbeat> <wr

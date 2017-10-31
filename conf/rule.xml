@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- - - Licensed under the Apache License, Version 2.0 (the "License"); 
+	- you may not use this file except in compliance with the License. - You 
+	may obtain a copy of the License at - - http://www.apache.org/licenses/LICENSE-2.0 
+	- - Unless required by applicable law or agreed to in writing, software - 
+	distributed under the License is distributed on an "AS IS" BASIS, - WITHOUT 
+	WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. - See the 
+	License for the specific language governing permissions and - limitations 
+	under the License. -->
+<!DOCTYPE mycat:rule SYSTEM "rule.dtd">
+<mycat:rule xmlns:mycat="http://io.mycat/">
+
+	<tableRule name="PartitionByFileMap">
+		<rule>
+			<columns>pk_id</columns>
+			<algorithm>PartitionByFileMap</algorithm>
+		</rule>
+	</tableRule>
+	<tableRule name="PartitionByLong">
+		<rule>
+			<columns>pk_id</columns>
+			<algorithm>PartitionByLong</algorithm>
+		</rule>
+	</tableRule>
+	<tableRule name="AutoPartitionByLong">
+		<rule>
+			<columns>pk_id</columns>
+			<algorithm>AutoPartitionByLong</algorithm>
+		</rule>
+	</tableRule>
+	<tableRule name="PartitionByMod">
+		<rule>
+			<columns>pk_id</columns>
+			<algorithm>PartitionByMod</algorithm>
+		</rule>
+	</tableRule>
+	<tableRule name="PartitionByDate">
+		<rule>
+			<columns>create_date</columns>
+			<algorithm>PartitionByDate</algorithm>
+		</rule>
+	</tableRule>
+	<tableRule name="PartitionByPattern">
+		<rule>
+			<columns>pk_id</columns>
+			<algorithm>PartitionByPattern</algorithm>
+		</rule>
+	</tableRule>
+	<tableRule name="PartitionByPrefixPattern">
+		<rule>
+			<columns>pk_id</columns>
+			<algorithm>PartitionByPrefixPattern</algorithm>
+		</rule>
+	</tableRule>
+	<tableRule name="PartitionDirectBySubString">
+		<rule>
+			<columns>pk_id</columns>
+			<algorithm>PartitionDirectBySubString</algorithm>
+		</rule>
+	</tableRule>
+	<tableRule name="PartitionByString">
+		<rule>
+			<columns>pk_id</columns>
+			<algorithm>PartitionByString</algorithm>
+		</rule>
+	</tableRule>
+	<tableRule name="PartitionByMurmurHash">
+		<rule>
+			<columns>pk_id</columns>
+			<algorithm>PartitionByMurmurHash</algorithm>
+		</rule>
+	</tableRule>
+	<tableRule name="LatestMonthPartion">
+		<rule>
+			<columns>create_date</columns>
+			<algorithm>LatestMonthPartion</algorithm>
+		</rule>
+	</tableRule>
+	<tableRule name="PartitionByRangeMod">
+		<rule>
+			<columns>pk_id</columns>
+			<algorithm>PartitionByRangeMod</algorithm>
+		</rule>
+	</tableRule>
+	<tableRule name="PartitionByRangeDateHash">
+		<rule>
+			<columns>create_date</columns>
+			<algorithm>PartitionByRangeDateHash</algorithm>
+		</rule>
+	</tableRule>
+	<tableRule name="PartitionByHotDate">
+		<rule>
+			<columns>create_date</columns>
+			<algorithm>PartitionByHotDate</algorithm>
+		</rule>
+	</tableRule>
+	<tableRule name="PartitionByMonth">
+		<rule>
+			<columns>create_date</columns>
+			<algorithm>PartitionByMonth</algorithm>
+		</rule>
+	</tableRule>
+
+
+	<!-- 分片枚举 -->
+	<function name="PartitionByFileMap" class="io.mycat.route.function.PartitionByFileMap">
+		<property name="mapFile">partition-hash-int.txt</property>
+		<property name="type">0</property>
+		<property name="defaultNode">-1</property>
+	</function>
+	<!-- 固定分片 hash 算法 -->
+	<function name="PartitionByLong" class="io.mycat.route.function.PartitionByLong">
+		<property name="partitionCount">1,1</property>
+		<property name="partitionLength">256,768</property>
+	</function>
+	<!-- 范围约定 -->
+	<function name="AutoPartitionByLong" class="io.mycat.route.function.AutoPartitionByLong">
+		<property name="mapFile">autopartition-long.txt</property>
+		<property name="defaultNode">0</property>
+	</function>
+	<!-- 取模 -->
+	<function name="PartitionByMod" class="io.mycat.route.function.PartitionByMod">
+		<!-- how many data nodes  -->
+		<property name="count">2</property>
+	</function>
+	<!-- 按日期（天）分片 -->
+	<function name="PartitionByDate" class="io.mycat.route.function.PartitionByDate">
+		<property name="dateFormat">yyyy-MM-dd</property> 
+		<property name="sBeginDate">2017-03-01</property>
+		<property name="sEndDate">2017-03-10</property>
+		<property name="sPartionDay">10</property>
+	</function>
+	<!-- 取模范围约束 -->
+	<function name="PartitionByPattern" class="io.mycat.route.function.PartitionByPattern">
+		<property name="patternValue">256</property>
+		<property name="defaultNode">1</property>
+		<property name="mapFile">partition-pattern.txt</property>
+	</function>
+	<!-- 截取做 hash 求模范围约束 -->
+	<function name="PartitionByPrefixPattern" class="io.mycat.route.function.PartitionByPrefixPattern">
+		<property name="patternValue">256</property>
+		<property name="prefixLength">3</property>
+		<property name="mapFile">partition-pattern.txt</property>
+	</function>
+	<!-- 应用指定 -->
+	<function name="PartitionDirectBySubString" class="io.mycat.route.function.PartitionDirectBySubString">
+		<property name="startIndex">0</property><!-- zero-based --> 
+		<property name="size">1</property>
+		<property name="partitionCount">2</property>
+		<property name="defaultPartition">0</property>
+	</function>
+	<!-- 截取数字 hash 解析 -->
+	<function name="PartitionByString" class="io.mycat.route.function.PartitionByString">
+		<property name="partitionLength">512</property><!-- zero-based -->
+		<property name="partitionCount">2</property>
+		<property name="hashSlice">0:2</property>
+	</function>
+	<!-- 一致性hash -->
+	<function name="PartitionByMurmurHash" class="io.mycat.route.function.PartitionByMurmurHash">
+		<property name="seed">0</property><!-- 默认是 0-->
+		<!-- 要分片的数据库节点数量，必须指定，否则没法分片-->
+		<property name="count">2</property>
+		<!-- 一个实际的数据库节点被映射为这么多虚拟节点，默认是 160 倍，也就是虚拟节点数是物理节点数的 160 倍-->
+		<property name="virtualBucketTimes">160</property>
+		<!--节点的权重，没有指定权重的节点默认是 1。以 properties 文件的格式填写，以从 0 开始到 count-1 的整数值也就
+		是节点索引为 key，以节点权重值为值。所有权重值必须是正整数，否则以 1 代替 -->
+		<property name="weightMapFile">weightMapFile.properties</property>
+	</function>
+	<!-- 按单月小时拆分 -->
+	<function name="LatestMonthPartion" class="io.mycat.route.function.LatestMonthPartion">
+		<property name="splitOneDay">1</property>
+	</function>
+	<!-- 范围求模分片 -->
+	<function name="PartitionByRangeMod" class="io.mycat.route.function.PartitionByRangeMod">
+		<property name="mapFile">partition-range-mod.txt</property>
+		<property name="defaultNode">0</property>
+	</function>
+	<!-- 日期范围 hash 分片 -->
+	<function name="PartitionByRangeDateHash" class="io.mycat.route.function.PartitionByRangeDateHash">
+		<property name="sBeginDate">2017-03-01 00:00:00</property>
+		<property name="sPartionDay">10</property>
+		<property name="dateFormat">yyyy-MM-dd HH:mm:ss</property>
+		<property name="groupPartionSize">2</property>
+	</function>
+	<!-- 冷热数据分片 -->
+	<function name="PartitionByHotDate" class="io.mycat.route.function.PartitionByHotDate">
+		<property name="dateFormat">yyyy-MM-dd</property>
+		<property name="sLastDay">30</property>
+		<property name="sPartionDay">60</property>
+	</function>
+	<!-- 自然月分片 -->
+	<function name="PartitionByMonth" class="io.mycat.route.function.PartitionByMonth">
+		<p
