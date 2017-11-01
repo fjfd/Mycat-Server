@@ -16,9 +16,12 @@
 		<table name="test_rwcs_timestap" dataNode="bss_dn$1-2" rule="customer_rule" primaryKey="cust_id"/>
 
 		<!-- 系统全局表 -->	
+		<table name="dual" type="global" dataNode="bss_dn$1-2" />
 		<table name="user_tables" type="global" dataNode="bss_dn$1-2" />
 		<table name="user_sequences" type="global" dataNode="bss_dn$1-2" />
-		<table name="dual" type="global" dataNode="bss_dn$1-2" />
+		<table name="dba_cons_columns" type="global" dataNode="bss_dn$1-2" />
+		<table name="dba_constraints" type="global" dataNode="bss_dn$1-2" />
+		<table name="dba_tab_cols" type="global" dataNode="bss_dn$1-2" />
 		
 		<!-- 客户业务全局表 -->
 		<table name="attr_spec" type="global" dataNode="bss_dn$1-2" />
@@ -873,9 +876,12 @@
 	<schema name="BSS3ORDERDB" checkSQLschema="false" sqlMaxLimit="100000">
 		
 		<!-- 系统全局表 -->	
+		<table name="dual" type="global" dataNode="bss_order$1-2" />
 		<table name="user_tables" type="global" dataNode="bss_order$1-2" />
 		<table name="user_sequences" type="global" dataNode="bss_order$1-2" />
-		<table name="dual" type="global" dataNode="bss_order$1-2" />
+		<table name="dba_cons_columns" type="global" dataNode="bss_order$1-2" />
+		<table name="dba_constraints" type="global" dataNode="bss_order$1-2" />
+		<table name="dba_tab_cols" type="global" dataNode="bss_order$1-2" />
 		
 		<!-- 订单业务全局表 -->
 		<table name="attr_spec" type="global" dataNode="bss_order$1-2" />
@@ -946,6 +952,7 @@
 		<table name="sys_table_dict" type="global" dataNode="bss_order$1-2" /><!-- 受理中心ord_dev -->
 		<table name="system_user" type="global"  dataNode="bss_order$1-2" />
 		<table name="system_user_post" type="global"  dataNode="bss_order$1-2" />
+		<table name="prod_offer_staff" type="global"  dataNode="bss_order$1-2" />
 		<table name="tache_type" type="global" dataNode="bss_order$1-2" />
 		<table name="tache_type_relation" type="global" dataNode="bss_order$1-2" />
 		<table name="tfm_action_args" type="global" dataNode="bss_order$1-2" />
@@ -2179,7 +2186,7 @@
 	
 	<!--                 数据主机，即物理库                 -->
 	<!-- 客户中心 -->
-	<dataHost name="hn_104_cust" maxCon="3000" minCon="100" balance="0"
+	<dataHost name="hn_104_cust" maxCon="1000" minCon="10" balance="0"
 			  writeType="0" dbType="oracle" dbDriver="jdbc" switchType="-1"  slaveThreshold="100">
 		<heartbeat>select 1 from dual</heartbeat>
 		
@@ -2189,7 +2196,7 @@
 			<!-- can have multi read hosts -->
 		</writeHost>
 	</dataHost>
-	<dataHost name="hn_111_cust" maxCon="3000" minCon="100" balance="0"
+	<dataHost name="hn_111_cust" maxCon="1000" minCon="10" balance="0"
 			  writeType="0" dbType="oracle" dbDriver="jdbc" switchType="-1"  slaveThreshold="100">
 		<heartbeat>select 1 from dual</heartbeat>
 		
@@ -2200,7 +2207,7 @@
 		</writeHost>
 	</dataHost>
 	<!-- 受理中心 -->
-	<dataHost name="hn_104_order" maxCon="3000" minCon="100" balance="0"
+	<dataHost name="hn_104_order" maxCon="1000" minCon="10" balance="0"
 			  writeType="0" dbType="oracle" dbDriver="jdbc" switchType="-1"  slaveThreshold="100">
 		<heartbeat>select 1 from dual</heartbeat>
 		
@@ -2210,7 +2217,7 @@
 			<!-- can have multi read hosts -->
 		</writeHost>
 	</dataHost>
-	<dataHost name="hn_111_order" maxCon="3000" minCon="100" balance="0"
+	<dataHost name="hn_111_order" maxCon="1000" minCon="10" balance="0"
 			  writeType="0" dbType="oracle" dbDriver="jdbc" switchType="-1"  slaveThreshold="100">
 		<heartbeat>select 1 from dual</heartbeat>
 		
